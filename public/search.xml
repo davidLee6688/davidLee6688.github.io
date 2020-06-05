@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>HTML5知识点总结</title>
+    <url>/2020/05/12/2020-2020-05-12-HTML5%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p><img src="/img/HTML5%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png" alt="HTML5知识点总结.png"></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTML标签整理</title>
     <url>/2020/05/12/2020-2020-05-12-HTML%E6%A0%87%E7%AD%BE%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<p><img src="/img/HTML%E6%A0%87%E7%AD%BE%E6%95%B4%E7%90%86.png" alt="HTML标签整理.png"></p>
@@ -13,15 +25,494 @@
       </tags>
   </entry>
   <entry>
-    <title>HTML5知识点总结</title>
-    <url>/2020/05/12/2020-2020-05-12-HTML5%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p><img src="/img/HTML5%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93.png" alt="HTML5知识点总结.png"></p>
+    <title>Cytoscape.js教程</title>
+    <url>/2020/05/16/2020-2020-05-16-cytoscape-js%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="一-Cytoscape-js简介与安装"><a href="#一-Cytoscape-js简介与安装" class="headerlink" title="一. Cytoscape.js简介与安装"></a>一. Cytoscape.js简介与安装</h1><h2 id="1-1-Cytoscape-js是什么？"><a href="#1-1-Cytoscape-js是什么？" class="headerlink" title="1.1 Cytoscape.js是什么？"></a>1.1 Cytoscape.js是什么？</h2><p>cytoscape.js是一个做网页可视化的常用工具 。cytoscape.js包含图论模型和可选的渲染器，用于显示交互式图形。该库旨在使程序员和科学家尽可能轻松地在他们的应用程序中使用图形理论，无论是用于Node.js应用程序中的服务器端分析还是用于丰富的用户界面。 </p>
+<h2 id="1-2-Cytoscape-js安装及HelloWorld"><a href="#1-2-Cytoscape-js安装及HelloWorld" class="headerlink" title="1.2 Cytoscape.js安装及HelloWorld"></a>1.2 Cytoscape.js安装及HelloWorld</h2><h3 id="1-2-1-使用包管理工具进行安装"><a href="#1-2-1-使用包管理工具进行安装" class="headerlink" title="1.2.1 使用包管理工具进行安装"></a>1.2.1 使用包管理工具进行安装</h3><ul>
+<li>npm : <code>npm install cytoscape</code></li>
+<li>bower : <code>bower install cytoscape</code></li>
+<li>jspm : <code>jspm install npm:cytoscape</code></li>
+</ul>
+<h3 id="1-2-2-使用Script标签直接引入"><a href="#1-2-2-使用Script标签直接引入" class="headerlink" title="1.2.2 使用Script标签直接引入"></a>1.2.2 使用Script标签直接引入</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;cytoscape.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-3-HelloWorld"><a href="#1-2-3-HelloWorld" class="headerlink" title="1.2.3 HelloWorld"></a>1.2.3 HelloWorld</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> cy = cytoscape(&#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'cy'</span>) <span class="comment">// container to render in</span></span><br><span class="line">&#125;);</span><br><span class="line">也可以给container传递jQuery实例</span><br><span class="line"><span class="keyword">var</span> cy = cytoscape(&#123;</span><br><span class="line">  container: $(<span class="string">'#cy'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-4-常用参数"><a href="#1-2-4-常用参数" class="headerlink" title="1.2.4 常用参数"></a>1.2.4 常用参数</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// very commonly used options</span></span><br><span class="line">  container: <span class="literal">undefined</span>,</span><br><span class="line">  elements: [ <span class="comment">/* ... */</span> ],</span><br><span class="line">  style: [ <span class="comment">/* ... */</span> ],</span><br><span class="line">  layout: &#123; <span class="attr">name</span>: <span class="string">'grid'</span> <span class="comment">/* , ... */</span> &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// initial viewport state:</span></span><br><span class="line">  zoom: <span class="number">1</span>,</span><br><span class="line">  pan: &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// interaction options:</span></span><br><span class="line">  minZoom: <span class="number">1e-50</span>,</span><br><span class="line">  maxZoom: <span class="number">1e50</span>,</span><br><span class="line">  zoomingEnabled: <span class="literal">true</span>,</span><br><span class="line">  userZoomingEnabled: <span class="literal">true</span>,</span><br><span class="line">  panningEnabled: <span class="literal">true</span>,</span><br><span class="line">  userPanningEnabled: <span class="literal">true</span>,</span><br><span class="line">  boxSelectionEnabled: <span class="literal">true</span>,</span><br><span class="line">  selectionType: <span class="string">'single'</span>,</span><br><span class="line">  touchTapThreshold: <span class="number">8</span>,</span><br><span class="line">  desktopTapThreshold: <span class="number">4</span>,</span><br><span class="line">  autolock: <span class="literal">false</span>,</span><br><span class="line">  autoungrabify: <span class="literal">false</span>,</span><br><span class="line">  autounselectify: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// rendering options:</span></span><br><span class="line">  headless: <span class="literal">false</span>,</span><br><span class="line">  styleEnabled: <span class="literal">true</span>,</span><br><span class="line">  hideEdgesOnViewport: <span class="literal">false</span>,</span><br><span class="line">  textureOnViewport: <span class="literal">false</span>,</span><br><span class="line">  motionBlur: <span class="literal">false</span>,</span><br><span class="line">  motionBlurOpacity: <span class="number">0.2</span>,</span><br><span class="line">  wheelSensitivity: <span class="number">1</span>,</span><br><span class="line">  pixelRatio: <span class="string">'auto'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="二-图形操作"><a href="#二-图形操作" class="headerlink" title="二. 图形操作"></a>二. 图形操作</h1><h2 id="1-添加元素"><a href="#1-添加元素" class="headerlink" title="1. 添加元素"></a>1. 添加元素</h2><p><code>cy.add()</code></p>
+<h3 id="1-1-添加单个节点"><a href="#1-1-添加单个节点" class="headerlink" title="1.1 添加单个节点"></a>1.1 添加单个节点</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.add(&#123;</span><br><span class="line">    group: <span class="string">'nodes'</span>,</span><br><span class="line">    data: &#123; <span class="attr">weight</span>: <span class="number">75</span> &#125;,</span><br><span class="line">    position: &#123; <span class="attr">x</span>: <span class="number">200</span>, <span class="attr">y</span>: <span class="number">200</span> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-添加节点和边"><a href="#1-2-添加节点和边" class="headerlink" title="1.2 添加节点和边"></a>1.2 添加节点和边</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> eles = cy.add([</span><br><span class="line">  &#123; <span class="attr">group</span>: <span class="string">'nodes'</span>, <span class="attr">data</span>: &#123; <span class="attr">id</span>: <span class="string">'n0'</span> &#125;, <span class="attr">position</span>: &#123; <span class="attr">x</span>: <span class="number">100</span>, <span class="attr">y</span>: <span class="number">100</span> &#125; &#125;,</span><br><span class="line">  &#123; <span class="attr">group</span>: <span class="string">'nodes'</span>, <span class="attr">data</span>: &#123; <span class="attr">id</span>: <span class="string">'n1'</span> &#125;, <span class="attr">position</span>: &#123; <span class="attr">x</span>: <span class="number">200</span>, <span class="attr">y</span>: <span class="number">200</span> &#125; &#125;,</span><br><span class="line">  &#123; <span class="attr">group</span>: <span class="string">'edges'</span>, <span class="attr">data</span>: &#123; <span class="attr">id</span>: <span class="string">'e0'</span>, <span class="attr">source</span>: <span class="string">'n0'</span>, <span class="attr">target</span>: <span class="string">'n1'</span> &#125; &#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-删除元素"><a href="#2-删除元素" class="headerlink" title="2. 删除元素"></a>2. 删除元素</h2><p><code>cy.remove()</code></p>
+<h3 id="2-1-移除单个元素"><a href="#2-1-移除单个元素" class="headerlink" title="2.1 移除单个元素"></a>2.1 移除单个元素</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> j = cy.$(<span class="string">'#j'</span>);</span><br><span class="line">cy.remove( j );</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-移除集合中的元素"><a href="#2-2-移除集合中的元素" class="headerlink" title="2.2 移除集合中的元素"></a>2.2 移除集合中的元素</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> collection = cy.elements(<span class="string">'node[weight &gt; 50]'</span>);</span><br><span class="line">cy.remove( collection );</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-使用选择器来进行元素删除"><a href="#2-3-使用选择器来进行元素删除" class="headerlink" title="2.3 使用选择器来进行元素删除"></a>2.3 使用选择器来进行元素删除</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> collection = cy.elements(<span class="string">'node[weight &gt; 50]'</span>);</span><br><span class="line">cy.remove( collection );</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-使用集合"><a href="#3-使用集合" class="headerlink" title="3. 使用集合"></a>3. 使用集合</h2><p><code>cy.collection()</code> — 获取一个空集合</p>
+<p>例如使用集合保存被点击过的节点</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> collection = cy.collection();</span><br><span class="line">cy.nodes().on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> clickedNode = e.target;</span><br><span class="line"></span><br><span class="line">  collection = collection.union(clickedNode);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-使用getElementById-来根据id获取指定元素"><a href="#4-使用getElementById-来根据id获取指定元素" class="headerlink" title="4. 使用getElementById()来根据id获取指定元素"></a>4. 使用getElementById()来根据id获取指定元素</h2><p><code>cy.getElementById( id )</code>  参数为元素的id值</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.getElementById(<span class="string">'j'</span>);</span><br><span class="line">或者使用下列方式</span><br><span class="line">cy.getElementById(<span class="string">'j'</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-元素匹配"><a href="#5-元素匹配" class="headerlink" title="5. 元素匹配"></a>5. 元素匹配</h2><h3 id="5-1-cy-selector"><a href="#5-1-cy-selector" class="headerlink" title="5.1 cy.$( selector )"></a>5.1 cy.$( selector )</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.$(<span class="string">"#a"</span>)  <span class="comment">// 获取id值为a的元素</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-cy-elements-selector"><a href="#5-2-cy-elements-selector" class="headerlink" title="5.2 cy.elements( selector )"></a>5.2 cy.elements( selector )</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.elements(<span class="string">'[weight &gt; 50]'</span>);  <span class="comment">// 获取权重大于50的元素</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-cy-nodes-selector"><a href="#5-3-cy-nodes-selector" class="headerlink" title="5.3 cy.nodes( selector )"></a>5.3 cy.nodes( selector )</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.nodes(<span class="string">'[weight &gt; 50]'</span>);   <span class="comment">// 获取权重大于50的节点</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4-cy-edges-selector"><a href="#5-4-cy-edges-selector" class="headerlink" title="5.4 cy.edges( selector )"></a>5.4 cy.edges( selector )</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cy.edges(<span class="string">'[source = "j"]'</span>); <span class="comment">// 获取源点为id为j的节点的边</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-5-cy-filter-selector"><a href="#5-5-cy-filter-selector" class="headerlink" title="5.5 cy.filter( selector )"></a>5.5 cy.filter( selector )</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cy.filter(<span class="string">'[weight &gt; 50]'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-6-cy-filter-ele-i-eles-gt"><a href="#5-6-cy-filter-ele-i-eles-gt" class="headerlink" title="5.6 cy.filter( ( ele, i, eles ) =&gt; {} )"></a>5.6 cy.filter( ( ele, i, eles ) =&gt; {} )</h3><p>使用回调函数的方式实现上面用选择器匹配的效果</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cy.filter(<span class="function"><span class="keyword">function</span>(<span class="params">element, i</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> element.isNode() &amp;&amp; element.data(<span class="string">'weight'</span>) &gt; <span class="number">50</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-批量操作"><a href="#6-批量操作" class="headerlink" title="6. 批量操作"></a>6. 批量操作</h2><p>这允许在不触发多个样式计算或多个元素重绘的情况下操作元素。此函数对于同时对元素进行许多更改非常有用。当指定的回调函数完成时，只有需要它的元素才会更新它们的样式，而呈现器最多只会重新绘制一次。</p>
+<p>包含下列三个API:</p>
+<ul>
+<li>cy.batch(() =&gt; { // do something })</li>
+<li>cy.startBatch()  — 手动开始批量操作,主要用于异步操作</li>
+<li>cy.endBatch() – 手动结束批量操作，主要用于异步操作</li>
+</ul>
+<h2 id="6-1-不使用批处理涉及到对元素的多个样式更新"><a href="#6-1-不使用批处理涉及到对元素的多个样式更新" class="headerlink" title="6.1 不使用批处理涉及到对元素的多个样式更新"></a>6.1 不使用批处理涉及到对元素的多个样式更新</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.$(<span class="string">'#j'</span>)</span><br><span class="line">  .data(<span class="string">'weight'</span>, <span class="string">'70'</span>)   <span class="comment">// 样式更新</span></span><br><span class="line">  .addClass(<span class="string">'funny'</span>)      <span class="comment">// 样式更新</span></span><br><span class="line">  .removeClass(<span class="string">'serious'</span>) <span class="comment">// 样式更新</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 至少一次，至多3次重绘，这取决于上述操作执行的速度</span></span><br></pre></td></tr></table></figure>
+
+<p>这对于少数元素的样式更新没有问题，但是如果对于大批量的元素进行上述操作，会造成很多冗余的重绘，导致性能问题，下面用批处理来解决上述问题</p>
+<h2 id="6-2-批处理中对元素的多样式更新"><a href="#6-2-批处理中对元素的多样式更新" class="headerlink" title="6.2 批处理中对元素的多样式更新"></a>6.2 批处理中对元素的多样式更新</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.batch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  cy.$(<span class="string">'#j'</span>)</span><br><span class="line">    .data(<span class="string">'weight'</span>, <span class="string">'70'</span>)</span><br><span class="line">    .addClass(<span class="string">'funny'</span>)</span><br><span class="line">    .removeClass(<span class="string">'serious'</span>)</span><br><span class="line">  ;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-2-如果采取手动控制批处理的开始与结束"><a href="#6-2-如果采取手动控制批处理的开始与结束" class="headerlink" title="6.2 如果采取手动控制批处理的开始与结束"></a>6.2 如果采取手动控制批处理的开始与结束</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cy.startBatch();</span><br><span class="line"></span><br><span class="line">cy.$(<span class="string">'#j'</span>)</span><br><span class="line">  .data(<span class="string">'weight'</span>, <span class="string">'70'</span>)</span><br><span class="line">  .addClass(<span class="string">'funny'</span>)</span><br><span class="line">  .removeClass(<span class="string">'serious'</span>)</span><br><span class="line">;</span><br><span class="line"></span><br><span class="line">cy.endBatch();</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-元素的挂载与卸载"><a href="#7-元素的挂载与卸载" class="headerlink" title="7. 元素的挂载与卸载"></a>7. 元素的挂载与卸载</h2><p><code>cy.mount( container )</code> container参数为挂载的dom元素</p>
+<p><code>cy.mount( container )</code> 移除container dom元素上挂载的cytoscape实例</p>
+<h2 id="8-元素的销毁"><a href="#8-元素的销毁" class="headerlink" title="8. 元素的销毁"></a>8. 元素的销毁</h2><p>销毁<strong>cytoscape</strong>实例</p>
+<p><code>cy.destroy()</code></p>
+<p>可以使用cy.cy.destroy()来判断<strong>cytoscape</strong>实例是否已经被销毁</p>
+<h1 id="三-数据绑定"><a href="#三-数据绑定" class="headerlink" title="三. 数据绑定"></a>三. 数据绑定</h1><h2 id="3-1-图数据绑定及获取"><a href="#3-1-图数据绑定及获取" class="headerlink" title="3.1 图数据绑定及获取"></a>3.1 图数据绑定及获取</h2><ul>
+<li><p>cy.data() — 获取整个图的数据对象</p>
+</li>
+<li><p>cy.data( name ) — 获取指定字段名的数据</p>
+</li>
+<li><p>cy.data( name, value )   — 绑定键为name,值为value的数据</p>
+</li>
+<li><p>cy.data( obj ) — 通过对象更新途中的多个字段值数据</p>
+</li>
+</ul>
+<h2 id="3-2-图数据删除"><a href="#3-2-图数据删除" class="headerlink" title="3.2 图数据删除"></a>3.2 图数据删除</h2><ul>
+<li>cy.removeData() — 删除图的所有可变数据</li>
+<li>cy.removeData(names) — 删除指定字段名的数据, names参数为要删除的字段的空格分隔列表</li>
+</ul>
+<h2 id="3-3-图数据暂存"><a href="#3-3-图数据暂存" class="headerlink" title="3.3 图数据暂存"></a>3.3 图数据暂存</h2><h3 id="3-3-1-cy-scratch"><a href="#3-3-1-cy-scratch" class="headerlink" title="3.3.1 cy.scratch()"></a>3.3.1 <code>cy.scratch()</code></h3><p>设置或获取暂存数据，其中可以存储临时数据或非json数据。应用程序级别的暂存数据应该使用带下划线前缀的名称空间，如’_foo’</p>
+<ul>
+<li><p>cy.scratch()  — 获取图所有名称空间下的暂存数据</p>
+</li>
+<li><p>cy.scratch( namespace ) — 获取指定名称空间下的暂存数据</p>
+</li>
+<li><p>cy.scratch( namespace, value )  — 添加名称空间namespace，并设置暂存值为value</p>
+<h3 id="3-3-2-cy-removeScratch"><a href="#3-3-2-cy-removeScratch" class="headerlink" title="3.3.2 cy.removeScratch()"></a>3.3.2 cy.removeScratch()</h3></li>
+</ul>
+<p>移除图的暂存数据</p>
+<p><code>cy.removeScratch( namespace )</code> 移除指定命名空间下的暂存数据, 不添加命名空间参数则会清空所有图相关的暂存数据</p>
+<h1 id="四-事件监听"><a href="#四-事件监听" class="headerlink" title="四. 事件监听"></a>四. 事件监听</h1><h2 id="4-1-事件普通绑定方式cy-on"><a href="#4-1-事件普通绑定方式cy-on" class="headerlink" title="4.1 事件普通绑定方式cy.on()"></a>4.1 事件普通绑定方式cy.on()</h2><p>别名： cy.bind()<code>,</code>cy.listen()<code>,</code>cy.addListener()</p>
+<p>事件的绑定方式如下:</p>
+<p>cy.on( events [, selector], function(event) )</p>
+<ul>
+<li><p><a href="https://js.cytoscape.org/#events" target="_blank" rel="noopener">events</a></p>
+<p><strong>空格分隔的时间名列表</strong></p>
+</li>
+<li><p><a href="https://js.cytoscape.org/#selectors" target="_blank" rel="noopener">selector</a></p>
+<p>可选参数, 如果不传递，事件将被绑定在整个图实例上</p>
+<p><strong>选择器，匹配到的元素将被绑定事件</strong></p>
+</li>
+<li><p>function(event)</p>
+<p><strong>事件监听的回调函数</strong></p>
+<ul>
+<li><p><a href="https://js.cytoscape.org/#events" target="_blank" rel="noopener">event</a></p>
+<p><strong>监听到的事件对象</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>一个实例</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.on(<span class="string">'tap'</span>, <span class="string">'node'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> node = evt.target;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">'tapped '</span> + node.id() );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>下列代码没有指定选择器，则事件被绑定到了整个图实例上</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.on(<span class="string">'tap'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// target holds a reference to the originator</span></span><br><span class="line">  <span class="comment">// of the event (core or element)</span></span><br><span class="line">  <span class="keyword">var</span> evtTarget = event.target;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>( evtTarget === cy )&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'tap on background'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'tap on some element'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-可以获取Promise对象的事件绑定方式cy-promiseOn"><a href="#4-2-可以获取Promise对象的事件绑定方式cy-promiseOn" class="headerlink" title="4.2 可以获取Promise对象的事件绑定方式cy.promiseOn()"></a>4.2 可以获取Promise对象的事件绑定方式cy.promiseOn()</h2><p>别名: pon</p>
+<p>事件触发后将获取到一个成功态的的Promise对象<br><code>cy.promiseOn( events [, selector] )</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.pon(<span class="string">'tap'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params"> event </span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'tap promise fulfilled'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-只生效一次的事件监听cy-one"><a href="#4-3-只生效一次的事件监听cy-one" class="headerlink" title="4.3 只生效一次的事件监听cy.one()"></a>4.3 只生效一次的事件监听cy.one()</h3><p>绑定的事件只响应一次</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.one(<span class="string">'tap'</span>, <span class="string">'node'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'tap!'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">cy.$(<span class="string">'node'</span>).eq(<span class="number">0</span>).trigger(<span class="string">'tap'</span>); <span class="comment">// 触发事件，事件不再响应</span></span><br><span class="line">cy.$(<span class="string">'node'</span>).eq(<span class="number">1</span>).trigger(<span class="string">'tap'</span>); <span class="comment">// 事件不再响应</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-4-事件监听的移除"><a href="#4-4-事件监听的移除" class="headerlink" title="4.4 事件监听的移除"></a>4.4 事件监听的移除</h2><h3 id="4-4-1-cy-removeListener"><a href="#4-4-1-cy-removeListener" class="headerlink" title="4.4.1 cy.removeListener()"></a>4.4.1 cy.removeListener()</h3><p>cy.removeListener( events [, selector] [, handler] )</p>
+<ul>
+<li><p><a href="https://js.cytoscape.org/#events" target="_blank" rel="noopener">events</a></p>
+<p>空格分隔的事件名列表</p>
+</li>
+<li><p><a href="https://js.cytoscape.org/#selectors" target="_blank" rel="noopener">selector</a></p>
+<p> 选择器，匹配到的元素将进行事件移除，可选参数，如果不指定，则移除对象为图实例 </p>
+</li>
+<li><p>handler<br>可选参数，可指定移除指定的处理器函数对象关联的事件，不指定则移除所有指定类型的事件处理器监听 </p>
+</li>
+</ul>
+<p>如下：<br>实例1: 不指定具体的事件处理器</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.on(<span class="string">'tap'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">/* ... */</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// remove all tap listener handlers, including the one above</span></span><br><span class="line">cy.removeListener(<span class="string">'tap'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>实例2: 针对具体的事件处理器进行事件绑定和解绑</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'called handler'</span>);</span><br><span class="line">&#125;;</span><br><span class="line">cy.on(<span class="string">'tap'</span>, handler);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> otherHandler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'called other handler'</span>);</span><br><span class="line">&#125;;</span><br><span class="line">cy.on(<span class="string">'tap'</span>, otherHandler);</span><br><span class="line"></span><br><span class="line"><span class="comment">// just remove handler</span></span><br><span class="line">cy.removeListener(<span class="string">'tap'</span>, handler);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-2-移除图实例所有事件监听"><a href="#4-4-2-移除图实例所有事件监听" class="headerlink" title="4.4.2 移除图实例所有事件监听"></a>4.4.2 移除图实例所有事件监听</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.removeAllListeners()</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-3-事件的主动触发"><a href="#4-4-3-事件的主动触发" class="headerlink" title="4.4.3 事件的主动触发"></a>4.4.3 事件的主动触发</h3><p>cy.emit()， 别名cy.trigger()</p>
+<p><code>cy.emit( events [, extraParams] )</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.on(<span class="string">'tap'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">evt, f, b</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'tap'</span>, f, b);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">cy.emit(<span class="string">'tap'</span>, [<span class="string">'foo'</span>, <span class="string">'bar'</span>]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-4-图准备就绪事件的监听"><a href="#4-4-4-图准备就绪事件的监听" class="headerlink" title="4.4.4 图准备就绪事件的监听"></a>4.4.4 图准备就绪事件的监听</h3><p><code>cy.ready()</code></p>
+<p>一旦图形准备好(即初始数据加载和初始布局完成)，就运行一个回调。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.ready(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="五-视口操作"><a href="#五-视口操作" class="headerlink" title="五. 视口操作"></a>五. 视口操作</h1><h2 id="5-1-使用cy-container-获取图实例的dom容器"><a href="#5-1-使用cy-container-获取图实例的dom容器" class="headerlink" title="5.1 使用cy.container()获取图实例的dom容器"></a>5.1 使用cy.container()获取图实例的dom容器</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.container()</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-2-居中操作cy-center"><a href="#5-2-居中操作cy-center" class="headerlink" title="5.2 居中操作cy.center()"></a>5.2 居中操作cy.center()</h2><ul>
+<li>cy.center() — 以图中所有元素为中心进行居中。</li>
+<li>cy.center( eles ) — 以指定元素为中心进行居中</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> j = cy.$(<span class="string">'#j'</span>);</span><br><span class="line">cy.center( j );</span><br></pre></td></tr></table></figure>
+
+<p>5.3 自适应</p>
+<p>cy.fit() — 自动调整图的平移距离和缩放级别以达到正好容纳元素的效果</p>
+<ul>
+<li>cy.fit() — 调整视口以容纳图中的所有元素</li>
+<li>cy.fit( [eles], [ padding]) — 调整视口以容纳指定元素，并可以指定padding</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.fit( cy.$(<span class="string">'#j, #e'</span>) );</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-3-重置图的默认缩放级别和平移位置"><a href="#5-3-重置图的默认缩放级别和平移位置" class="headerlink" title="5.3 重置图的默认缩放级别和平移位置"></a>5.3 重置图的默认缩放级别和平移位置</h2><p>cy.reset() </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  cy.pan(&#123; <span class="attr">x</span>: <span class="number">50</span>, <span class="attr">y</span>: <span class="number">-100</span> &#125;);</span><br><span class="line">&#125;, <span class="number">1000</span> );</span><br><span class="line"></span><br><span class="line">setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  cy.zoom( <span class="number">2</span> );</span><br><span class="line">&#125;, <span class="number">2000</span> );</span><br><span class="line"></span><br><span class="line">setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  cy.reset();</span><br><span class="line">&#125;, <span class="number">3000</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-4-获取或设置图形的平移位置。"><a href="#5-4-获取或设置图形的平移位置。" class="headerlink" title="5.4 获取或设置图形的平移位置。"></a>5.4 获取或设置图形的平移位置。</h2><ul>
+<li>cy.pan() — 获取当前平移位置</li>
+<li>cy.pan( renderedPosition )  — eg: { x: 100, y: 200 }</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.pan(&#123;</span><br><span class="line">  x: <span class="number">100</span>,</span><br><span class="line">  y: <span class="number">100</span> </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( cy.pan() );</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-5-对于当前位置相对地平移图形"><a href="#5-5-对于当前位置相对地平移图形" class="headerlink" title="5.5 对于当前位置相对地平移图形"></a>5.5 对于当前位置相对地平移图形</h2><p><code>cy.panBy( renderedPosition )</code></p>
+<p>如将图形向右平移100像素:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.panBy(&#123;</span><br><span class="line">  x: <span class="number">100</span>,</span><br><span class="line">  y: <span class="number">0</span> </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-6-设置是否可以支持平移操作"><a href="#5-6-设置是否可以支持平移操作" class="headerlink" title="5.6 设置是否可以支持平移操作"></a>5.6 设置是否可以支持平移操作</h2><ul>
+<li>cy.panningEnabled()  — 获取是否当前图实例支持进行平移操作</li>
+<li>cy.panningEnabled( bool ) — 设置当前图实例是否支持进行平移操作</li>
+<li>cy.userPanningEnabled()  —  获取是否启用了用户平移(用户的拖拽操作)。</li>
+<li>cy.userPanningEnabled( bool ) — 设置是否启用用户平移</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.panningEnabled( bool )</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.userPanningEnabled( <span class="literal">true</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-7-指定缩放级别"><a href="#5-7-指定缩放级别" class="headerlink" title="5.7 指定缩放级别"></a>5.7 指定缩放级别</h2><h3 id="5-7-1-cy-zoom"><a href="#5-7-1-cy-zoom" class="headerlink" title="5.7.1 cy.zoom()"></a>5.7.1 cy.zoom()</h3><ul>
+<li><p>cy.zoom() 获取缩放级别</p>
+</li>
+<li><p>cy.zoom( level )  设置缩放级别</p>
+</li>
+<li><p>cy.zoom( options )  <strong>options</strong> The options for zooming.</p>
+<ul>
+<li><p>level</p>
+<p>缩放级别</p>
+</li>
+<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">position</a></p>
+<p>要缩放的位置</p>
+</li>
+<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">renderedPosition</a></p>
+<p>缩放到的位置</p>
+<p>position和renderedPosition不要同时指定</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>eg:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.zoom(&#123;</span><br><span class="line">  level: <span class="number">1.5</span>,</span><br><span class="line">  position: cy.getElementById(<span class="string">'a'</span>).position()</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>cy.minZoom() —  获取最小缩放级别</p>
+</li>
+<li><p>cy.maxZoom() –  设置最小缩放级别</p>
+</li>
+<li><p>cy.viewport( zoom, pan ) — 通过一个函数来设置缩放级别和平移位置</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.viewport(&#123;</span><br><span class="line">  zoom: <span class="number">2</span>,</span><br><span class="line">  pan: &#123; <span class="attr">x</span>: <span class="number">100</span>, <span class="attr">y</span>: <span class="number">100</span> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="5-7-2-cy-zoomingEnabled"><a href="#5-7-2-cy-zoomingEnabled" class="headerlink" title="5.7.2 cy.zoomingEnabled()"></a>5.7.2 cy.zoomingEnabled()</h3><ul>
+<li><p>cy.zoomingEnabled() — 获取是否支持缩放</p>
+</li>
+<li><p>cy.zoomingEnabled(bool)  — 设置是否支持缩放</p>
+</li>
+<li><p>userZoomingEnabled() — 获取是否支持用户使用鼠标等交互方式进行缩放</p>
+</li>
+<li><p>userZoomingEnabled( bool ) — 设置是否支持用户使用鼠标等交互方式进行缩放</p>
+</li>
+</ul>
+<h2 id="5-8-boxSelectionEnabled"><a href="#5-8-boxSelectionEnabled" class="headerlink" title="5.8 boxSelectionEnabled"></a>5.8 boxSelectionEnabled</h2><p>获取或设置是否启用了框选择。如果同时启用平移，用户必须按住shift、control、alt或command中的一个来启动框选择</p>
+<ul>
+<li>cy.boxSelectionEnabled() — 获取是否支持扩选</li>
+<li>cy.boxSelectionEnabled( bool ) — 设置是否支持扩选</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.boxSelectionEnabled( <span class="literal">true</span> );</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-9-cy-selectionType"><a href="#5-9-cy-selectionType" class="headerlink" title="5.9 cy.selectionType()"></a>5.9 cy.selectionType()</h2><p>设置或设置选择类型。“single”选择类型是默认的，点击一个元素将选择该元素并取消选择前面的元素。</p>
+<p>还可以指定为追加类型”additive”, 可逐次选中多个元素</p>
+<ul>
+<li>cy.selectionType()</li>
+<li>cy.selectionType( type ) “single”(default)或者”additive”</li>
+</ul>
+<h2 id="5-10-获取视口宽度和高度"><a href="#5-10-获取视口宽度和高度" class="headerlink" title="5.10 获取视口宽度和高度"></a>5.10 获取视口宽度和高度</h2><ul>
+<li>cy.width()</li>
+<li>cy.height()</li>
+<li>cy.extend()<br>获取viewport的范围，模型坐标中的一个边界框让您知道在viewport中哪些模型位置是可见的。</li>
+</ul>
+<p>![image-20200418201051078](/Users/liwei/Library/Application Support/typora-user-images/image-20200418201051078.png)</p>
+<h1 id="5-11-cy-autolock"><a href="#5-11-cy-autolock" class="headerlink" title="5.11 cy.autolock()"></a>5.11 cy.autolock()</h1><p>获取或设置节点是否被自动锁定(即，如果为真，则无论节点的状态如何都被锁定)</p>
+<ul>
+<li>cy.autolock() — 获取图节点是否自动锁定</li>
+<li>cy.autolock( bool ) — 设置图节点是否自动锁定</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.autolock( bool )</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-12-设置节点是否自动取消抓取autoungrabify"><a href="#5-12-设置节点是否自动取消抓取autoungrabify" class="headerlink" title="5.12 设置节点是否自动取消抓取autoungrabify"></a>5.12 设置节点是否自动取消抓取autoungrabify</h2><ul>
+<li>cy.autoungrabify()  — 获取是否自动取消抓取被启用</li>
+<li>cy.autoungrabify( bool ) —  设置是否启动自动取消抓取</li>
+</ul>
+<h2 id="5-13-获取或设置节点是否自动取消选择"><a href="#5-13-获取或设置节点是否自动取消选择" class="headerlink" title="5.13 获取或设置节点是否自动取消选择"></a>5.13 获取或设置节点是否自动取消选择</h2><ul>
+<li>cy.autounselectify()</li>
+<li>cy.autounselectify( bool )</li>
+</ul>
+<h2 id="5-14-强制渲染器重新计算视口边界"><a href="#5-14-强制渲染器重新计算视口边界" class="headerlink" title="5.14 强制渲染器重新计算视口边界"></a>5.14 强制渲染器重新计算视口边界</h2><p><code>cy.resize()</code></p>
+<p>别名: <code>cy.invalidateDimensions()</code></p>
+<h1 id="六-动画Animation"><a href="#六-动画Animation" class="headerlink" title="六. 动画Animation"></a>六. 动画Animation</h1><h2 id="6-1-动画执行cy-animate"><a href="#6-1-动画执行cy-animate" class="headerlink" title="6.1 动画执行cy.animate()"></a>6.1 动画执行cy.animate()</h2><ul>
+<li><p>cy.animated()  判断是否有动画在进行</p>
+</li>
+<li><p>cy.animate( options ) 操纵视口执行动画<strong>options</strong> An object containing the details of the animation.</p>
+<ul>
+<li><p>zoom</p>
+<p>一个缩放级别(数字)或一个缩放配置对象。</p>
+</li>
+<li><ul>
+<li><p>level </p>
+<p>要使用的缩放级别。</p>
+</li>
+<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">position</a> </p>
+<p>缩放发生的位置。这将自动修改pan，使指定的模型位置在缩放期间保持在viewport区段中的相同位置。</p>
+</li>
+<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">renderedPosition</a></p>
+<p>关于缩放发生的渲染位置，作为使用模型位置的替代。这将自动修改pan，使模型位置(与动画开始时呈现的位置相对应)在缩放期间保持在viewport区段中的相同位置。</p>
+</li>
+</ul>
+</li>
+<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">pan</a></p>
+<p>图形将被移动到的平移位置。</p>
+</li>
+<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">panBy</a></p>
+<p>图形将被移动到的相对平移位置。</p>
+</li>
+<li><p>fit<br>  一个包含图自动调整以适应对应元素的参数对象</p>
+</li>
+<li><ul>
+<li><p><a href="https://js.cytoscape.org/#collection" target="_blank" rel="noopener">eles</a></p>
+<p>视口将进行调整以容纳对应元素</p>
+</li>
+<li><p>padding</p>
+<p>Padding to use with the fitting (default <code>0</code>).</p>
+</li>
+</ul>
+</li>
+<li><p>center</p>
+<p>一个对象，该对象包含将从其中对图形进行动画处理的居中选项。</p>
+</li>
+<li><ul>
+<li><p><a href="https://js.cytoscape.org/#collection" target="_blank" rel="noopener">eles</a></p>
+<p>将视口置于中心的elements或选择器</p>
+</li>
+</ul>
+</li>
+<li><p>duration</p>
+<p>动画执行时间</p>
+</li>
+<li><p>queue</p>
+<p>一个布尔值，指示是否对动画进行排队(默认为“true”)。核心上排队的动画按顺序运行，直到队列为空。</p>
+</li>
+<li><p><a href="https://js.cytoscape.org/#style/transition-animation" target="_blank" rel="noopener">easing</a></p>
+<p>指定<a href="https://js.cytoscape.org/#style/transition-animation" target="_blank" rel="noopener"> transition- time- function </a>类型，以形成动画的进度曲线。</p>
+</li>
+<li><p>complete<br>动画执行完成时候执行的回调函数</p>
+</li>
+<li><p>step</p>
+<p>动画步骤调用回调。</p>
+</li>
+</ul>
+<p>eg:</p>
+<ol>
+<li>操纵pan和zoom</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.animate(&#123;</span><br><span class="line">  pan: &#123; <span class="attr">x</span>: <span class="number">100</span>, <span class="attr">y</span>: <span class="number">100</span> &#125;,</span><br><span class="line">  zoom: <span class="number">2</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  duration: <span class="number">1000</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>视口自适应容纳元素</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.animate(&#123;</span><br><span class="line">  fit: &#123;</span><br><span class="line">    eles: j,</span><br><span class="line">    padding: <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  duration: <span class="number">1000</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="6-2-动画获取cy-animation"><a href="#6-2-动画获取cy-animation" class="headerlink" title="6.2 动画获取cy.animation()"></a>6.2 动画获取cy.animation()</h2><p>获取视口的动画。</p>
+<p><code>cy.animation( options )</code></p>
+<p>options参数同上, 该函数用来获取指定配置信息的动画</p>
+<h2 id="6-3-为动画添加延迟cy-delay"><a href="#6-3-为动画添加延迟cy-delay" class="headerlink" title="6.3 为动画添加延迟cy.delay()"></a>6.3 为动画添加延迟cy.delay()</h2><p><code>cy.delay( duration, complete )</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy</span><br><span class="line">  .animate(&#123;</span><br><span class="line">    fit: &#123; <span class="attr">eles</span>: <span class="string">'#j'</span> &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  .delay(<span class="number">1000</span>)   <span class="comment">// 1s</span></span><br><span class="line"></span><br><span class="line">  .animate(&#123;</span><br><span class="line">    fit: &#123; <span class="attr">eles</span>: <span class="string">'#e'</span> &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-4-获取视口的延迟动画cy-delayAnimation"><a href="#6-4-获取视口的延迟动画cy-delayAnimation" class="headerlink" title="6.4 获取视口的延迟动画cy.delayAnimation()"></a>6.4 获取视口的延迟动画cy.delayAnimation()</h2><p><code>cy.delayAnimation( duration )</code> — duration为延迟时间</p>
+<h2 id="6-5-停止动画"><a href="#6-5-停止动画" class="headerlink" title="6.5 停止动画"></a>6.5 停止动画</h2><p><code>stop(clearQueue, jumpToEnd)</code><br>clearQueue是一个布尔值(默认为false)，表示动画队列是否应该被清空。<br>jumpToEnd一个布尔值(默认为false)，指示当前运行的动画是否应该跳转到它们的末端，而不是中途停止。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.animate(&#123;</span><br><span class="line">  fit: &#123; <span class="attr">eles</span>: <span class="string">'#j'</span> &#125;</span><br><span class="line">&#125;, &#123; <span class="attr">duration</span>: <span class="number">2000</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// stop in the middle</span></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  cy.stop();</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-6-清空动画队列cy-clearQueue"><a href="#6-6-清空动画队列cy-clearQueue" class="headerlink" title="6.6 清空动画队列cy.clearQueue()"></a>6.6 清空动画队列cy.clearQueue()</h2><p>删除viewport中所有排队的动画。</p>
+<h1 id="七-布局-Layout"><a href="#七-布局-Layout" class="headerlink" title="七.布局 Layout"></a>七.布局 Layout</h1><p><code>cy.layout()</code></p>
+<p>别名: <code>cy.createLayout()</code>, <code>cy.makeLayout()</code></p>
+<p>获取一个新的布局，它可以用于用算法在图中定位节点。</p>
+<p>cy.layout( options )</p>
+<ul>
+<li>options  布局参数, options.name必须指定</li>
+</ul>
+<p>cy.layout()会返回一个布局实例，可以基于这个实例进行其他操作</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> layout = cy.layout(&#123;</span><br><span class="line">  name: <span class="string">'random'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">layout.run();</span><br></pre></td></tr></table></figure>
+
+<h1 id="八-样式Style"><a href="#八-样式Style" class="headerlink" title="八. 样式Style"></a>八. 样式Style</h1><p><code>cy.style()</code></p>
+<ul>
+<li>cy.style() — 获取当前图的样式对象</li>
+<li>cy.style( stylesheet ) — 为图指定新的样式对象<br><strong><a href="https://js.cytoscape.org/#style" target="_blank" rel="noopener">stylesheet</a></strong> 参数可以是一个 <code>cytoscape.stylesheet()</code> 对象, 一个样式对象的字符串, 也可以指定为JSON格式的字符串(格式参考[options.style`](<a href="https://js.cytoscape.org/#style" target="_blank" rel="noopener">https://js.cytoscape.org/#style</a>))</li>
+</ul>
+<h2 id="8-1-样式字符串"><a href="#8-1-样式字符串" class="headerlink" title="8.1 样式字符串"></a>8.1 样式字符串</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cytoscape(&#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'cy'</span>),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  style: <span class="string">'node &#123; background-color: green; &#125;'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// , ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-2-普通JSON格式"><a href="#8-2-普通JSON格式" class="headerlink" title="8.2 普通JSON格式"></a>8.2 普通JSON格式</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cytoscape(&#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'cy'</span>),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  style: [</span><br><span class="line">    &#123;</span><br><span class="line">      selector: <span class="string">'node'</span>,</span><br><span class="line">      style: &#123;</span><br><span class="line">        <span class="string">'background-color'</span>: <span class="string">'red'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// , ...</span></span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  <span class="comment">// , ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-3-cytoscape-stylesheet-用法"><a href="#8-3-cytoscape-stylesheet-用法" class="headerlink" title="8.3 cytoscape.stylesheet()`用法"></a>8.3 cytoscape.stylesheet()`用法</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cytoscape(&#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'cy'</span>),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  style: cytoscape.stylesheet()</span><br><span class="line">    .selector(<span class="string">'node'</span>)</span><br><span class="line">      .style(&#123;</span><br><span class="line">        <span class="string">'background-color'</span>: <span class="string">'blue'</span></span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// , ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-4-根据元素data进行样式绘制"><a href="#8-4-根据元素data进行样式绘制" class="headerlink" title="8.4 根据元素data进行样式绘制"></a>8.4 根据元素data进行样式绘制</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cytoscape(&#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'cy'</span>),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  style: cytoscape.stylesheet()</span><br><span class="line">    .selector(<span class="string">'node'</span>)</span><br><span class="line">      .style(&#123;</span><br><span class="line">        <span class="string">'background-color'</span>: <span class="function"><span class="keyword">function</span>(<span class="params"> ele </span>)</span>&#123; <span class="keyword">return</span> ele.data(<span class="string">'bg'</span>) &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// which works the same as</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 'background-color': 'data(bg)'</span></span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// , ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-5-设置一个全新的样式"><a href="#8-5-设置一个全新的样式" class="headerlink" title="8.5 设置一个全新的样式"></a>8.5 设置一个全新的样式</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.style()</span><br><span class="line">  .clear() <span class="comment">//清除默认样式而应用一个全新的样式</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 定义节点样式</span></span><br><span class="line">  .selector(<span class="string">'node'</span>)</span><br><span class="line">    .style(<span class="string">'background-color'</span>, <span class="string">'magenta'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 定义边样式</span></span><br><span class="line">  .selector(<span class="string">'edge'</span>)</span><br><span class="line">      .style(&#123;</span><br><span class="line">      <span class="string">'width'</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="string">'line-color'</span>: <span class="string">'yellow'</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  .update() <span class="comment">// 显示声明样式更新代码的结束，通知cytoscape更新元素样式</span></span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-6-从样式字符串创建style"><a href="#8-6-从样式字符串创建style" class="headerlink" title="8.6 从样式字符串创建style"></a>8.6 从样式字符串创建style</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.style()</span><br><span class="line">  .fromString(<span class="string">'node &#123; background-color: blue; &#125;'</span>)</span><br><span class="line"></span><br><span class="line">  .update() <span class="comment">// update the elements in the graph with the new style</span></span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-7-获取当前样式的JSON对象"><a href="#8-7-获取当前样式的JSON对象" class="headerlink" title="8.7 获取当前样式的JSON对象"></a>8.7 获取当前样式的JSON对象</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> styleJson = cy.style().json();</span><br><span class="line"><span class="keyword">var</span> serializedJson = <span class="built_in">JSON</span>.stringify( styleJson );</span><br></pre></td></tr></table></figure>
+
+<h1 id="九-图的导出"><a href="#九-图的导出" class="headerlink" title="九. 图的导出"></a>九. 图的导出</h1><h2 id="9-1-将当前图形视图导出为PNG图像"><a href="#9-1-将当前图形视图导出为PNG图像" class="headerlink" title="9.1 将当前图形视图导出为PNG图像"></a>9.1 将当前图形视图导出为PNG图像</h2><p>cy.png( options )</p>
+<ul>
+<li><p>options</p>
+<p>导出参数设置</p>
+<ul>
+<li><p>output</p>
+<p>输出应该是“base64uri”(默认)、“base64”、“blob”还是“blob-promise”(返回解析为blob的Promise)。</p>
+</li>
+<li><p>bg</p>
+<p>图像的背景颜色(默认为白色)。</p>
+</li>
+<li><p>full</p>
+<p>是导出当前的viewport视图(“false”，默认)还是导出整个图(“true”)。</p>
+</li>
+<li><p>scale </p>
+<p>此值指定一个正数，该正数缩放生成的图像的大小。</p>
+</li>
+<li><p>maxWidth</p>
+<p> 指定与“maxHeight”组合的自动比例，以便生成的图像宽度不超过“maxWidth”。</p>
+</li>
+<li><p>maxHeight</p>
+<p> 指定与“maxWidth”组合的自动比例，以便生成的图像不高于“maxHeight”。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>eg:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> png64 = cy.png();</span><br><span class="line"></span><br><span class="line"><span class="comment">// put the png data in an img tag</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#png-eg'</span>).setAttribute(<span class="string">'src'</span>, png64);</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-2-导出图为jpg"><a href="#9-2-导出图为jpg" class="headerlink" title="9.2 导出图为jpg"></a>9.2 导出图为jpg</h2><p><code>cy.jpg()</code></p>
+<p>cy.jpg( options )</p>
+<ul>
+<li><p>options</p>
+<p>导出参数对象</p>
+<ul>
+<li><p>output</p>
+<p>输出应该是“base64uri”(默认)、“base64”、“blob”还是“blob-promise”(返回解析为blob的Promise)。</p>
+</li>
+<li><p>bg</p>
+<p>图像的背景颜色(默认为白色)。</p>
+</li>
+<li><p>full</p>
+<p>是导出当前的viewport视图(“false”，默认)还是导出整个图(“true”)。</p>
+</li>
+<li><p>scale</p>
+<p>此值指定一个正数，该正数缩放生成的图像的大小。</p>
+</li>
+<li><p>maxWidth</p>
+<p>指定与“maxHeight”组合的自动比例，以便生成的图像宽度不超过“maxWidth”。</p>
+</li>
+<li><p>maxHeight</p>
+<p>指定与“maxWidth”组合的自动比例，以便生成的图像不高于“maxHeight”。</p>
+</li>
+<li><p>quality</p>
+<p>指定从’ 0 ‘(低质量，低文件大小)到’ 1 ‘(高质量，高文件大小)的图像质量。如果没有设置，则使用浏览器的默认质量值。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jpg64 = cy.jpg();</span><br><span class="line"></span><br><span class="line"><span class="comment">// put the png data in an img tag</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#jpg-eg'</span>).setAttribute(<span class="string">'src'</span>, jpg64);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="9-3-导出JSON"><a href="#9-3-导出JSON" class="headerlink" title="9.3 导出JSON"></a>9.3 导出JSON</h2><p><code>cy.json()</code></p>
+<p>以初始化时使用的相同JSON格式导入或导出图数据。</p>
+<p>cy.json( flatEles )</p>
+<ul>
+<li><p>flatEles</p>
+<p>resulant JSON是否应该将元素包含为平面数组(‘ true ‘)或两个按组键控的数组(‘ false ‘，默认)。</p>
+</li>
+</ul>
+<p>cy.json( cyJson )</p>
+<p>将图形作为JSON导入，只更新指定的字段。</p>
+<ul>
+<li><p><a href="https://js.cytoscape.org/#core/initialisation" target="_blank" rel="noopener">cyJson</a></p>
+<p>具有与应该更改的状态对应的字段的对象。</p>
+</li>
+</ul>
+<p>eg:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.json(&#123;</span><br><span class="line">  zoom: <span class="number">2</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>前端</category>
       </categories>
       <tags>
-        <tag>HTML</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端资源整理</title>
+    <url>/2020/06/04/2020-2020-06-04-%E5%89%8D%E7%AB%AF%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h1 id="JavaScript相关"><a href="#JavaScript相关" class="headerlink" title="JavaScript相关"></a>JavaScript相关</h1><p><a href="https://caniuse.com/" target="_blank" rel="noopener">JavaScript语法兼容性查询网站</a></p>
+<p><a href="https://kangax.github.io/compat-table/es6/" target="_blank" rel="noopener">ES语法兼容性查询网站</a></p>
+<p><a href="https://zh.javascript.info/" target="_blank" rel="noopener">JavaScript现代教程</a> </p>
+<p><a href="https://es6.ruanyifeng.com/" target="_blank" rel="noopener">ES6阮一峰教程</a>  </p>
+<p><a href="https://www.nodebeginner.org/index-zh-cn.html" target="_blank" rel="noopener">NodeJS入门</a> </p>
+<p><a href="https://zhuanlan.zhihu.com/p/30333791" target="_blank" rel="noopener">JavaScript书籍推荐</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -563,497 +1054,6 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Cytoscape.js教程</title>
-    <url>/2020/05/16/2020-2020-05-16-cytoscape-js%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="一-Cytoscape-js简介与安装"><a href="#一-Cytoscape-js简介与安装" class="headerlink" title="一. Cytoscape.js简介与安装"></a>一. Cytoscape.js简介与安装</h1><h2 id="1-1-Cytoscape-js是什么？"><a href="#1-1-Cytoscape-js是什么？" class="headerlink" title="1.1 Cytoscape.js是什么？"></a>1.1 Cytoscape.js是什么？</h2><p>cytoscape.js是一个做网页可视化的常用工具 。cytoscape.js包含图论模型和可选的渲染器，用于显示交互式图形。该库旨在使程序员和科学家尽可能轻松地在他们的应用程序中使用图形理论，无论是用于Node.js应用程序中的服务器端分析还是用于丰富的用户界面。 </p>
-<h2 id="1-2-Cytoscape-js安装及HelloWorld"><a href="#1-2-Cytoscape-js安装及HelloWorld" class="headerlink" title="1.2 Cytoscape.js安装及HelloWorld"></a>1.2 Cytoscape.js安装及HelloWorld</h2><h3 id="1-2-1-使用包管理工具进行安装"><a href="#1-2-1-使用包管理工具进行安装" class="headerlink" title="1.2.1 使用包管理工具进行安装"></a>1.2.1 使用包管理工具进行安装</h3><ul>
-<li>npm : <code>npm install cytoscape</code></li>
-<li>bower : <code>bower install cytoscape</code></li>
-<li>jspm : <code>jspm install npm:cytoscape</code></li>
-</ul>
-<h3 id="1-2-2-使用Script标签直接引入"><a href="#1-2-2-使用Script标签直接引入" class="headerlink" title="1.2.2 使用Script标签直接引入"></a>1.2.2 使用Script标签直接引入</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;cytoscape.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-3-HelloWorld"><a href="#1-2-3-HelloWorld" class="headerlink" title="1.2.3 HelloWorld"></a>1.2.3 HelloWorld</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> cy = cytoscape(&#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'cy'</span>) <span class="comment">// container to render in</span></span><br><span class="line">&#125;);</span><br><span class="line">也可以给container传递jQuery实例</span><br><span class="line"><span class="keyword">var</span> cy = cytoscape(&#123;</span><br><span class="line">  container: $(<span class="string">'#cy'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-4-常用参数"><a href="#1-2-4-常用参数" class="headerlink" title="1.2.4 常用参数"></a>1.2.4 常用参数</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// very commonly used options</span></span><br><span class="line">  container: <span class="literal">undefined</span>,</span><br><span class="line">  elements: [ <span class="comment">/* ... */</span> ],</span><br><span class="line">  style: [ <span class="comment">/* ... */</span> ],</span><br><span class="line">  layout: &#123; <span class="attr">name</span>: <span class="string">'grid'</span> <span class="comment">/* , ... */</span> &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// initial viewport state:</span></span><br><span class="line">  zoom: <span class="number">1</span>,</span><br><span class="line">  pan: &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// interaction options:</span></span><br><span class="line">  minZoom: <span class="number">1e-50</span>,</span><br><span class="line">  maxZoom: <span class="number">1e50</span>,</span><br><span class="line">  zoomingEnabled: <span class="literal">true</span>,</span><br><span class="line">  userZoomingEnabled: <span class="literal">true</span>,</span><br><span class="line">  panningEnabled: <span class="literal">true</span>,</span><br><span class="line">  userPanningEnabled: <span class="literal">true</span>,</span><br><span class="line">  boxSelectionEnabled: <span class="literal">true</span>,</span><br><span class="line">  selectionType: <span class="string">'single'</span>,</span><br><span class="line">  touchTapThreshold: <span class="number">8</span>,</span><br><span class="line">  desktopTapThreshold: <span class="number">4</span>,</span><br><span class="line">  autolock: <span class="literal">false</span>,</span><br><span class="line">  autoungrabify: <span class="literal">false</span>,</span><br><span class="line">  autounselectify: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// rendering options:</span></span><br><span class="line">  headless: <span class="literal">false</span>,</span><br><span class="line">  styleEnabled: <span class="literal">true</span>,</span><br><span class="line">  hideEdgesOnViewport: <span class="literal">false</span>,</span><br><span class="line">  textureOnViewport: <span class="literal">false</span>,</span><br><span class="line">  motionBlur: <span class="literal">false</span>,</span><br><span class="line">  motionBlurOpacity: <span class="number">0.2</span>,</span><br><span class="line">  wheelSensitivity: <span class="number">1</span>,</span><br><span class="line">  pixelRatio: <span class="string">'auto'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="二-图形操作"><a href="#二-图形操作" class="headerlink" title="二. 图形操作"></a>二. 图形操作</h1><h2 id="1-添加元素"><a href="#1-添加元素" class="headerlink" title="1. 添加元素"></a>1. 添加元素</h2><p><code>cy.add()</code></p>
-<h3 id="1-1-添加单个节点"><a href="#1-1-添加单个节点" class="headerlink" title="1.1 添加单个节点"></a>1.1 添加单个节点</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.add(&#123;</span><br><span class="line">    group: <span class="string">'nodes'</span>,</span><br><span class="line">    data: &#123; <span class="attr">weight</span>: <span class="number">75</span> &#125;,</span><br><span class="line">    position: &#123; <span class="attr">x</span>: <span class="number">200</span>, <span class="attr">y</span>: <span class="number">200</span> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-添加节点和边"><a href="#1-2-添加节点和边" class="headerlink" title="1.2 添加节点和边"></a>1.2 添加节点和边</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> eles = cy.add([</span><br><span class="line">  &#123; <span class="attr">group</span>: <span class="string">'nodes'</span>, <span class="attr">data</span>: &#123; <span class="attr">id</span>: <span class="string">'n0'</span> &#125;, <span class="attr">position</span>: &#123; <span class="attr">x</span>: <span class="number">100</span>, <span class="attr">y</span>: <span class="number">100</span> &#125; &#125;,</span><br><span class="line">  &#123; <span class="attr">group</span>: <span class="string">'nodes'</span>, <span class="attr">data</span>: &#123; <span class="attr">id</span>: <span class="string">'n1'</span> &#125;, <span class="attr">position</span>: &#123; <span class="attr">x</span>: <span class="number">200</span>, <span class="attr">y</span>: <span class="number">200</span> &#125; &#125;,</span><br><span class="line">  &#123; <span class="attr">group</span>: <span class="string">'edges'</span>, <span class="attr">data</span>: &#123; <span class="attr">id</span>: <span class="string">'e0'</span>, <span class="attr">source</span>: <span class="string">'n0'</span>, <span class="attr">target</span>: <span class="string">'n1'</span> &#125; &#125;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-删除元素"><a href="#2-删除元素" class="headerlink" title="2. 删除元素"></a>2. 删除元素</h2><p><code>cy.remove()</code></p>
-<h3 id="2-1-移除单个元素"><a href="#2-1-移除单个元素" class="headerlink" title="2.1 移除单个元素"></a>2.1 移除单个元素</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> j = cy.$(<span class="string">'#j'</span>);</span><br><span class="line">cy.remove( j );</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-移除集合中的元素"><a href="#2-2-移除集合中的元素" class="headerlink" title="2.2 移除集合中的元素"></a>2.2 移除集合中的元素</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> collection = cy.elements(<span class="string">'node[weight &gt; 50]'</span>);</span><br><span class="line">cy.remove( collection );</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-3-使用选择器来进行元素删除"><a href="#2-3-使用选择器来进行元素删除" class="headerlink" title="2.3 使用选择器来进行元素删除"></a>2.3 使用选择器来进行元素删除</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> collection = cy.elements(<span class="string">'node[weight &gt; 50]'</span>);</span><br><span class="line">cy.remove( collection );</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-使用集合"><a href="#3-使用集合" class="headerlink" title="3. 使用集合"></a>3. 使用集合</h2><p><code>cy.collection()</code> — 获取一个空集合</p>
-<p>例如使用集合保存被点击过的节点</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> collection = cy.collection();</span><br><span class="line">cy.nodes().on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> clickedNode = e.target;</span><br><span class="line"></span><br><span class="line">  collection = collection.union(clickedNode);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-使用getElementById-来根据id获取指定元素"><a href="#4-使用getElementById-来根据id获取指定元素" class="headerlink" title="4. 使用getElementById()来根据id获取指定元素"></a>4. 使用getElementById()来根据id获取指定元素</h2><p><code>cy.getElementById( id )</code>  参数为元素的id值</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.getElementById(<span class="string">'j'</span>);</span><br><span class="line">或者使用下列方式</span><br><span class="line">cy.getElementById(<span class="string">'j'</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-元素匹配"><a href="#5-元素匹配" class="headerlink" title="5. 元素匹配"></a>5. 元素匹配</h2><h3 id="5-1-cy-selector"><a href="#5-1-cy-selector" class="headerlink" title="5.1 cy.$( selector )"></a>5.1 cy.$( selector )</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.$(<span class="string">"#a"</span>)  <span class="comment">// 获取id值为a的元素</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5-2-cy-elements-selector"><a href="#5-2-cy-elements-selector" class="headerlink" title="5.2 cy.elements( selector )"></a>5.2 cy.elements( selector )</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.elements(<span class="string">'[weight &gt; 50]'</span>);  <span class="comment">// 获取权重大于50的元素</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5-3-cy-nodes-selector"><a href="#5-3-cy-nodes-selector" class="headerlink" title="5.3 cy.nodes( selector )"></a>5.3 cy.nodes( selector )</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.nodes(<span class="string">'[weight &gt; 50]'</span>);   <span class="comment">// 获取权重大于50的节点</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5-4-cy-edges-selector"><a href="#5-4-cy-edges-selector" class="headerlink" title="5.4 cy.edges( selector )"></a>5.4 cy.edges( selector )</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cy.edges(<span class="string">'[source = "j"]'</span>); <span class="comment">// 获取源点为id为j的节点的边</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5-5-cy-filter-selector"><a href="#5-5-cy-filter-selector" class="headerlink" title="5.5 cy.filter( selector )"></a>5.5 cy.filter( selector )</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cy.filter(<span class="string">'[weight &gt; 50]'</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-6-cy-filter-ele-i-eles-gt"><a href="#5-6-cy-filter-ele-i-eles-gt" class="headerlink" title="5.6 cy.filter( ( ele, i, eles ) =&gt; {} )"></a>5.6 cy.filter( ( ele, i, eles ) =&gt; {} )</h3><p>使用回调函数的方式实现上面用选择器匹配的效果</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cy.filter(<span class="function"><span class="keyword">function</span>(<span class="params">element, i</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> element.isNode() &amp;&amp; element.data(<span class="string">'weight'</span>) &gt; <span class="number">50</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-批量操作"><a href="#6-批量操作" class="headerlink" title="6. 批量操作"></a>6. 批量操作</h2><p>这允许在不触发多个样式计算或多个元素重绘的情况下操作元素。此函数对于同时对元素进行许多更改非常有用。当指定的回调函数完成时，只有需要它的元素才会更新它们的样式，而呈现器最多只会重新绘制一次。</p>
-<p>包含下列三个API:</p>
-<ul>
-<li>cy.batch(() =&gt; { // do something })</li>
-<li>cy.startBatch()  — 手动开始批量操作,主要用于异步操作</li>
-<li>cy.endBatch() – 手动结束批量操作，主要用于异步操作</li>
-</ul>
-<h2 id="6-1-不使用批处理涉及到对元素的多个样式更新"><a href="#6-1-不使用批处理涉及到对元素的多个样式更新" class="headerlink" title="6.1 不使用批处理涉及到对元素的多个样式更新"></a>6.1 不使用批处理涉及到对元素的多个样式更新</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.$(<span class="string">'#j'</span>)</span><br><span class="line">  .data(<span class="string">'weight'</span>, <span class="string">'70'</span>)   <span class="comment">// 样式更新</span></span><br><span class="line">  .addClass(<span class="string">'funny'</span>)      <span class="comment">// 样式更新</span></span><br><span class="line">  .removeClass(<span class="string">'serious'</span>) <span class="comment">// 样式更新</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 至少一次，至多3次重绘，这取决于上述操作执行的速度</span></span><br></pre></td></tr></table></figure>
-
-<p>这对于少数元素的样式更新没有问题，但是如果对于大批量的元素进行上述操作，会造成很多冗余的重绘，导致性能问题，下面用批处理来解决上述问题</p>
-<h2 id="6-2-批处理中对元素的多样式更新"><a href="#6-2-批处理中对元素的多样式更新" class="headerlink" title="6.2 批处理中对元素的多样式更新"></a>6.2 批处理中对元素的多样式更新</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.batch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  cy.$(<span class="string">'#j'</span>)</span><br><span class="line">    .data(<span class="string">'weight'</span>, <span class="string">'70'</span>)</span><br><span class="line">    .addClass(<span class="string">'funny'</span>)</span><br><span class="line">    .removeClass(<span class="string">'serious'</span>)</span><br><span class="line">  ;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-2-如果采取手动控制批处理的开始与结束"><a href="#6-2-如果采取手动控制批处理的开始与结束" class="headerlink" title="6.2 如果采取手动控制批处理的开始与结束"></a>6.2 如果采取手动控制批处理的开始与结束</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">cy.startBatch();</span><br><span class="line"></span><br><span class="line">cy.$(<span class="string">'#j'</span>)</span><br><span class="line">  .data(<span class="string">'weight'</span>, <span class="string">'70'</span>)</span><br><span class="line">  .addClass(<span class="string">'funny'</span>)</span><br><span class="line">  .removeClass(<span class="string">'serious'</span>)</span><br><span class="line">;</span><br><span class="line"></span><br><span class="line">cy.endBatch();</span><br></pre></td></tr></table></figure>
-
-<h2 id="7-元素的挂载与卸载"><a href="#7-元素的挂载与卸载" class="headerlink" title="7. 元素的挂载与卸载"></a>7. 元素的挂载与卸载</h2><p><code>cy.mount( container )</code> container参数为挂载的dom元素</p>
-<p><code>cy.mount( container )</code> 移除container dom元素上挂载的cytoscape实例</p>
-<h2 id="8-元素的销毁"><a href="#8-元素的销毁" class="headerlink" title="8. 元素的销毁"></a>8. 元素的销毁</h2><p>销毁<strong>cytoscape</strong>实例</p>
-<p><code>cy.destroy()</code></p>
-<p>可以使用cy.cy.destroy()来判断<strong>cytoscape</strong>实例是否已经被销毁</p>
-<h1 id="三-数据绑定"><a href="#三-数据绑定" class="headerlink" title="三. 数据绑定"></a>三. 数据绑定</h1><h2 id="3-1-图数据绑定及获取"><a href="#3-1-图数据绑定及获取" class="headerlink" title="3.1 图数据绑定及获取"></a>3.1 图数据绑定及获取</h2><ul>
-<li><p>cy.data() — 获取整个图的数据对象</p>
-</li>
-<li><p>cy.data( name ) — 获取指定字段名的数据</p>
-</li>
-<li><p>cy.data( name, value )   — 绑定键为name,值为value的数据</p>
-</li>
-<li><p>cy.data( obj ) — 通过对象更新途中的多个字段值数据</p>
-</li>
-</ul>
-<h2 id="3-2-图数据删除"><a href="#3-2-图数据删除" class="headerlink" title="3.2 图数据删除"></a>3.2 图数据删除</h2><ul>
-<li>cy.removeData() — 删除图的所有可变数据</li>
-<li>cy.removeData(names) — 删除指定字段名的数据, names参数为要删除的字段的空格分隔列表</li>
-</ul>
-<h2 id="3-3-图数据暂存"><a href="#3-3-图数据暂存" class="headerlink" title="3.3 图数据暂存"></a>3.3 图数据暂存</h2><h3 id="3-3-1-cy-scratch"><a href="#3-3-1-cy-scratch" class="headerlink" title="3.3.1 cy.scratch()"></a>3.3.1 <code>cy.scratch()</code></h3><p>设置或获取暂存数据，其中可以存储临时数据或非json数据。应用程序级别的暂存数据应该使用带下划线前缀的名称空间，如’_foo’</p>
-<ul>
-<li><p>cy.scratch()  — 获取图所有名称空间下的暂存数据</p>
-</li>
-<li><p>cy.scratch( namespace ) — 获取指定名称空间下的暂存数据</p>
-</li>
-<li><p>cy.scratch( namespace, value )  — 添加名称空间namespace，并设置暂存值为value</p>
-<h3 id="3-3-2-cy-removeScratch"><a href="#3-3-2-cy-removeScratch" class="headerlink" title="3.3.2 cy.removeScratch()"></a>3.3.2 cy.removeScratch()</h3></li>
-</ul>
-<p>移除图的暂存数据</p>
-<p><code>cy.removeScratch( namespace )</code> 移除指定命名空间下的暂存数据, 不添加命名空间参数则会清空所有图相关的暂存数据</p>
-<h1 id="四-事件监听"><a href="#四-事件监听" class="headerlink" title="四. 事件监听"></a>四. 事件监听</h1><h2 id="4-1-事件普通绑定方式cy-on"><a href="#4-1-事件普通绑定方式cy-on" class="headerlink" title="4.1 事件普通绑定方式cy.on()"></a>4.1 事件普通绑定方式cy.on()</h2><p>别名： cy.bind()<code>,</code>cy.listen()<code>,</code>cy.addListener()</p>
-<p>事件的绑定方式如下:</p>
-<p>cy.on( events [, selector], function(event) )</p>
-<ul>
-<li><p><a href="https://js.cytoscape.org/#events" target="_blank" rel="noopener">events</a></p>
-<p><strong>空格分隔的时间名列表</strong></p>
-</li>
-<li><p><a href="https://js.cytoscape.org/#selectors" target="_blank" rel="noopener">selector</a></p>
-<p>可选参数, 如果不传递，事件将被绑定在整个图实例上</p>
-<p><strong>选择器，匹配到的元素将被绑定事件</strong></p>
-</li>
-<li><p>function(event)</p>
-<p><strong>事件监听的回调函数</strong></p>
-<ul>
-<li><p><a href="https://js.cytoscape.org/#events" target="_blank" rel="noopener">event</a></p>
-<p><strong>监听到的事件对象</strong></p>
-</li>
-</ul>
-</li>
-</ul>
-<p>一个实例</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.on(<span class="string">'tap'</span>, <span class="string">'node'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> node = evt.target;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">'tapped '</span> + node.id() );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>下列代码没有指定选择器，则事件被绑定到了整个图实例上</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.on(<span class="string">'tap'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// target holds a reference to the originator</span></span><br><span class="line">  <span class="comment">// of the event (core or element)</span></span><br><span class="line">  <span class="keyword">var</span> evtTarget = event.target;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>( evtTarget === cy )&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'tap on background'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'tap on some element'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-2-可以获取Promise对象的事件绑定方式cy-promiseOn"><a href="#4-2-可以获取Promise对象的事件绑定方式cy-promiseOn" class="headerlink" title="4.2 可以获取Promise对象的事件绑定方式cy.promiseOn()"></a>4.2 可以获取Promise对象的事件绑定方式cy.promiseOn()</h2><p>别名: pon</p>
-<p>事件触发后将获取到一个成功态的的Promise对象<br><code>cy.promiseOn( events [, selector] )</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.pon(<span class="string">'tap'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params"> event </span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'tap promise fulfilled'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-3-只生效一次的事件监听cy-one"><a href="#4-3-只生效一次的事件监听cy-one" class="headerlink" title="4.3 只生效一次的事件监听cy.one()"></a>4.3 只生效一次的事件监听cy.one()</h3><p>绑定的事件只响应一次</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.one(<span class="string">'tap'</span>, <span class="string">'node'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'tap!'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">cy.$(<span class="string">'node'</span>).eq(<span class="number">0</span>).trigger(<span class="string">'tap'</span>); <span class="comment">// 触发事件，事件不再响应</span></span><br><span class="line">cy.$(<span class="string">'node'</span>).eq(<span class="number">1</span>).trigger(<span class="string">'tap'</span>); <span class="comment">// 事件不再响应</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-4-事件监听的移除"><a href="#4-4-事件监听的移除" class="headerlink" title="4.4 事件监听的移除"></a>4.4 事件监听的移除</h2><h3 id="4-4-1-cy-removeListener"><a href="#4-4-1-cy-removeListener" class="headerlink" title="4.4.1 cy.removeListener()"></a>4.4.1 cy.removeListener()</h3><p>cy.removeListener( events [, selector] [, handler] )</p>
-<ul>
-<li><p><a href="https://js.cytoscape.org/#events" target="_blank" rel="noopener">events</a></p>
-<p>空格分隔的事件名列表</p>
-</li>
-<li><p><a href="https://js.cytoscape.org/#selectors" target="_blank" rel="noopener">selector</a></p>
-<p> 选择器，匹配到的元素将进行事件移除，可选参数，如果不指定，则移除对象为图实例 </p>
-</li>
-<li><p>handler<br>可选参数，可指定移除指定的处理器函数对象关联的事件，不指定则移除所有指定类型的事件处理器监听 </p>
-</li>
-</ul>
-<p>如下：<br>实例1: 不指定具体的事件处理器</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.on(<span class="string">'tap'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">/* ... */</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// remove all tap listener handlers, including the one above</span></span><br><span class="line">cy.removeListener(<span class="string">'tap'</span>);</span><br></pre></td></tr></table></figure>
-
-<p>实例2: 针对具体的事件处理器进行事件绑定和解绑</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'called handler'</span>);</span><br><span class="line">&#125;;</span><br><span class="line">cy.on(<span class="string">'tap'</span>, handler);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> otherHandler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'called other handler'</span>);</span><br><span class="line">&#125;;</span><br><span class="line">cy.on(<span class="string">'tap'</span>, otherHandler);</span><br><span class="line"></span><br><span class="line"><span class="comment">// just remove handler</span></span><br><span class="line">cy.removeListener(<span class="string">'tap'</span>, handler);</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-4-2-移除图实例所有事件监听"><a href="#4-4-2-移除图实例所有事件监听" class="headerlink" title="4.4.2 移除图实例所有事件监听"></a>4.4.2 移除图实例所有事件监听</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.removeAllListeners()</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-4-3-事件的主动触发"><a href="#4-4-3-事件的主动触发" class="headerlink" title="4.4.3 事件的主动触发"></a>4.4.3 事件的主动触发</h3><p>cy.emit()， 别名cy.trigger()</p>
-<p><code>cy.emit( events [, extraParams] )</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.on(<span class="string">'tap'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">evt, f, b</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'tap'</span>, f, b);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">cy.emit(<span class="string">'tap'</span>, [<span class="string">'foo'</span>, <span class="string">'bar'</span>]);</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-4-4-图准备就绪事件的监听"><a href="#4-4-4-图准备就绪事件的监听" class="headerlink" title="4.4.4 图准备就绪事件的监听"></a>4.4.4 图准备就绪事件的监听</h3><p><code>cy.ready()</code></p>
-<p>一旦图形准备好(即初始数据加载和初始布局完成)，就运行一个回调。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.ready(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="五-视口操作"><a href="#五-视口操作" class="headerlink" title="五. 视口操作"></a>五. 视口操作</h1><h2 id="5-1-使用cy-container-获取图实例的dom容器"><a href="#5-1-使用cy-container-获取图实例的dom容器" class="headerlink" title="5.1 使用cy.container()获取图实例的dom容器"></a>5.1 使用cy.container()获取图实例的dom容器</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.container()</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="5-2-居中操作cy-center"><a href="#5-2-居中操作cy-center" class="headerlink" title="5.2 居中操作cy.center()"></a>5.2 居中操作cy.center()</h2><ul>
-<li>cy.center() — 以图中所有元素为中心进行居中。</li>
-<li>cy.center( eles ) — 以指定元素为中心进行居中</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> j = cy.$(<span class="string">'#j'</span>);</span><br><span class="line">cy.center( j );</span><br></pre></td></tr></table></figure>
-
-<p>5.3 自适应</p>
-<p>cy.fit() — 自动调整图的平移距离和缩放级别以达到正好容纳元素的效果</p>
-<ul>
-<li>cy.fit() — 调整视口以容纳图中的所有元素</li>
-<li>cy.fit( [eles], [ padding]) — 调整视口以容纳指定元素，并可以指定padding</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.fit( cy.$(<span class="string">'#j, #e'</span>) );</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-3-重置图的默认缩放级别和平移位置"><a href="#5-3-重置图的默认缩放级别和平移位置" class="headerlink" title="5.3 重置图的默认缩放级别和平移位置"></a>5.3 重置图的默认缩放级别和平移位置</h2><p>cy.reset() </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  cy.pan(&#123; <span class="attr">x</span>: <span class="number">50</span>, <span class="attr">y</span>: <span class="number">-100</span> &#125;);</span><br><span class="line">&#125;, <span class="number">1000</span> );</span><br><span class="line"></span><br><span class="line">setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  cy.zoom( <span class="number">2</span> );</span><br><span class="line">&#125;, <span class="number">2000</span> );</span><br><span class="line"></span><br><span class="line">setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  cy.reset();</span><br><span class="line">&#125;, <span class="number">3000</span> );</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-4-获取或设置图形的平移位置。"><a href="#5-4-获取或设置图形的平移位置。" class="headerlink" title="5.4 获取或设置图形的平移位置。"></a>5.4 获取或设置图形的平移位置。</h2><ul>
-<li>cy.pan() — 获取当前平移位置</li>
-<li>cy.pan( renderedPosition )  — eg: { x: 100, y: 200 }</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.pan(&#123;</span><br><span class="line">  x: <span class="number">100</span>,</span><br><span class="line">  y: <span class="number">100</span> </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( cy.pan() );</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-5-对于当前位置相对地平移图形"><a href="#5-5-对于当前位置相对地平移图形" class="headerlink" title="5.5 对于当前位置相对地平移图形"></a>5.5 对于当前位置相对地平移图形</h2><p><code>cy.panBy( renderedPosition )</code></p>
-<p>如将图形向右平移100像素:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.panBy(&#123;</span><br><span class="line">  x: <span class="number">100</span>,</span><br><span class="line">  y: <span class="number">0</span> </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-6-设置是否可以支持平移操作"><a href="#5-6-设置是否可以支持平移操作" class="headerlink" title="5.6 设置是否可以支持平移操作"></a>5.6 设置是否可以支持平移操作</h2><ul>
-<li>cy.panningEnabled()  — 获取是否当前图实例支持进行平移操作</li>
-<li>cy.panningEnabled( bool ) — 设置当前图实例是否支持进行平移操作</li>
-<li>cy.userPanningEnabled()  —  获取是否启用了用户平移(用户的拖拽操作)。</li>
-<li>cy.userPanningEnabled( bool ) — 设置是否启用用户平移</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.panningEnabled( bool )</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.userPanningEnabled( <span class="literal">true</span> );</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-7-指定缩放级别"><a href="#5-7-指定缩放级别" class="headerlink" title="5.7 指定缩放级别"></a>5.7 指定缩放级别</h2><h3 id="5-7-1-cy-zoom"><a href="#5-7-1-cy-zoom" class="headerlink" title="5.7.1 cy.zoom()"></a>5.7.1 cy.zoom()</h3><ul>
-<li><p>cy.zoom() 获取缩放级别</p>
-</li>
-<li><p>cy.zoom( level )  设置缩放级别</p>
-</li>
-<li><p>cy.zoom( options )  <strong>options</strong> The options for zooming.</p>
-<ul>
-<li><p>level</p>
-<p>缩放级别</p>
-</li>
-<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">position</a></p>
-<p>要缩放的位置</p>
-</li>
-<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">renderedPosition</a></p>
-<p>缩放到的位置</p>
-<p>position和renderedPosition不要同时指定</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>eg:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.zoom(&#123;</span><br><span class="line">  level: <span class="number">1.5</span>,</span><br><span class="line">  position: cy.getElementById(<span class="string">'a'</span>).position()</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>cy.minZoom() —  获取最小缩放级别</p>
-</li>
-<li><p>cy.maxZoom() –  设置最小缩放级别</p>
-</li>
-<li><p>cy.viewport( zoom, pan ) — 通过一个函数来设置缩放级别和平移位置</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.viewport(&#123;</span><br><span class="line">  zoom: <span class="number">2</span>,</span><br><span class="line">  pan: &#123; <span class="attr">x</span>: <span class="number">100</span>, <span class="attr">y</span>: <span class="number">100</span> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h3 id="5-7-2-cy-zoomingEnabled"><a href="#5-7-2-cy-zoomingEnabled" class="headerlink" title="5.7.2 cy.zoomingEnabled()"></a>5.7.2 cy.zoomingEnabled()</h3><ul>
-<li><p>cy.zoomingEnabled() — 获取是否支持缩放</p>
-</li>
-<li><p>cy.zoomingEnabled(bool)  — 设置是否支持缩放</p>
-</li>
-<li><p>userZoomingEnabled() — 获取是否支持用户使用鼠标等交互方式进行缩放</p>
-</li>
-<li><p>userZoomingEnabled( bool ) — 设置是否支持用户使用鼠标等交互方式进行缩放</p>
-</li>
-</ul>
-<h2 id="5-8-boxSelectionEnabled"><a href="#5-8-boxSelectionEnabled" class="headerlink" title="5.8 boxSelectionEnabled"></a>5.8 boxSelectionEnabled</h2><p>获取或设置是否启用了框选择。如果同时启用平移，用户必须按住shift、control、alt或command中的一个来启动框选择</p>
-<ul>
-<li>cy.boxSelectionEnabled() — 获取是否支持扩选</li>
-<li>cy.boxSelectionEnabled( bool ) — 设置是否支持扩选</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.boxSelectionEnabled( <span class="literal">true</span> );</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-9-cy-selectionType"><a href="#5-9-cy-selectionType" class="headerlink" title="5.9 cy.selectionType()"></a>5.9 cy.selectionType()</h2><p>设置或设置选择类型。“single”选择类型是默认的，点击一个元素将选择该元素并取消选择前面的元素。</p>
-<p>还可以指定为追加类型”additive”, 可逐次选中多个元素</p>
-<ul>
-<li>cy.selectionType()</li>
-<li>cy.selectionType( type ) “single”(default)或者”additive”</li>
-</ul>
-<h2 id="5-10-获取视口宽度和高度"><a href="#5-10-获取视口宽度和高度" class="headerlink" title="5.10 获取视口宽度和高度"></a>5.10 获取视口宽度和高度</h2><ul>
-<li>cy.width()</li>
-<li>cy.height()</li>
-<li>cy.extend()<br>获取viewport的范围，模型坐标中的一个边界框让您知道在viewport中哪些模型位置是可见的。</li>
-</ul>
-<p>![image-20200418201051078](/Users/liwei/Library/Application Support/typora-user-images/image-20200418201051078.png)</p>
-<h1 id="5-11-cy-autolock"><a href="#5-11-cy-autolock" class="headerlink" title="5.11 cy.autolock()"></a>5.11 cy.autolock()</h1><p>获取或设置节点是否被自动锁定(即，如果为真，则无论节点的状态如何都被锁定)</p>
-<ul>
-<li>cy.autolock() — 获取图节点是否自动锁定</li>
-<li>cy.autolock( bool ) — 设置图节点是否自动锁定</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.autolock( bool )</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-12-设置节点是否自动取消抓取autoungrabify"><a href="#5-12-设置节点是否自动取消抓取autoungrabify" class="headerlink" title="5.12 设置节点是否自动取消抓取autoungrabify"></a>5.12 设置节点是否自动取消抓取autoungrabify</h2><ul>
-<li>cy.autoungrabify()  — 获取是否自动取消抓取被启用</li>
-<li>cy.autoungrabify( bool ) —  设置是否启动自动取消抓取</li>
-</ul>
-<h2 id="5-13-获取或设置节点是否自动取消选择"><a href="#5-13-获取或设置节点是否自动取消选择" class="headerlink" title="5.13 获取或设置节点是否自动取消选择"></a>5.13 获取或设置节点是否自动取消选择</h2><ul>
-<li>cy.autounselectify()</li>
-<li>cy.autounselectify( bool )</li>
-</ul>
-<h2 id="5-14-强制渲染器重新计算视口边界"><a href="#5-14-强制渲染器重新计算视口边界" class="headerlink" title="5.14 强制渲染器重新计算视口边界"></a>5.14 强制渲染器重新计算视口边界</h2><p><code>cy.resize()</code></p>
-<p>别名: <code>cy.invalidateDimensions()</code></p>
-<h1 id="六-动画Animation"><a href="#六-动画Animation" class="headerlink" title="六. 动画Animation"></a>六. 动画Animation</h1><h2 id="6-1-动画执行cy-animate"><a href="#6-1-动画执行cy-animate" class="headerlink" title="6.1 动画执行cy.animate()"></a>6.1 动画执行cy.animate()</h2><ul>
-<li><p>cy.animated()  判断是否有动画在进行</p>
-</li>
-<li><p>cy.animate( options ) 操纵视口执行动画<strong>options</strong> An object containing the details of the animation.</p>
-<ul>
-<li><p>zoom</p>
-<p>一个缩放级别(数字)或一个缩放配置对象。</p>
-</li>
-<li><ul>
-<li><p>level </p>
-<p>要使用的缩放级别。</p>
-</li>
-<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">position</a> </p>
-<p>缩放发生的位置。这将自动修改pan，使指定的模型位置在缩放期间保持在viewport区段中的相同位置。</p>
-</li>
-<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">renderedPosition</a></p>
-<p>关于缩放发生的渲染位置，作为使用模型位置的替代。这将自动修改pan，使模型位置(与动画开始时呈现的位置相对应)在缩放期间保持在viewport区段中的相同位置。</p>
-</li>
-</ul>
-</li>
-<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">pan</a></p>
-<p>图形将被移动到的平移位置。</p>
-</li>
-<li><p><a href="https://js.cytoscape.org/#notation/position" target="_blank" rel="noopener">panBy</a></p>
-<p>图形将被移动到的相对平移位置。</p>
-</li>
-<li><p>fit<br>  一个包含图自动调整以适应对应元素的参数对象</p>
-</li>
-<li><ul>
-<li><p><a href="https://js.cytoscape.org/#collection" target="_blank" rel="noopener">eles</a></p>
-<p>视口将进行调整以容纳对应元素</p>
-</li>
-<li><p>padding</p>
-<p>Padding to use with the fitting (default <code>0</code>).</p>
-</li>
-</ul>
-</li>
-<li><p>center</p>
-<p>一个对象，该对象包含将从其中对图形进行动画处理的居中选项。</p>
-</li>
-<li><ul>
-<li><p><a href="https://js.cytoscape.org/#collection" target="_blank" rel="noopener">eles</a></p>
-<p>将视口置于中心的elements或选择器</p>
-</li>
-</ul>
-</li>
-<li><p>duration</p>
-<p>动画执行时间</p>
-</li>
-<li><p>queue</p>
-<p>一个布尔值，指示是否对动画进行排队(默认为“true”)。核心上排队的动画按顺序运行，直到队列为空。</p>
-</li>
-<li><p><a href="https://js.cytoscape.org/#style/transition-animation" target="_blank" rel="noopener">easing</a></p>
-<p>指定<a href="https://js.cytoscape.org/#style/transition-animation" target="_blank" rel="noopener"> transition- time- function </a>类型，以形成动画的进度曲线。</p>
-</li>
-<li><p>complete<br>动画执行完成时候执行的回调函数</p>
-</li>
-<li><p>step</p>
-<p>动画步骤调用回调。</p>
-</li>
-</ul>
-<p>eg:</p>
-<ol>
-<li>操纵pan和zoom</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.animate(&#123;</span><br><span class="line">  pan: &#123; <span class="attr">x</span>: <span class="number">100</span>, <span class="attr">y</span>: <span class="number">100</span> &#125;,</span><br><span class="line">  zoom: <span class="number">2</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  duration: <span class="number">1000</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>视口自适应容纳元素</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.animate(&#123;</span><br><span class="line">  fit: &#123;</span><br><span class="line">    eles: j,</span><br><span class="line">    padding: <span class="number">20</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  duration: <span class="number">1000</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="6-2-动画获取cy-animation"><a href="#6-2-动画获取cy-animation" class="headerlink" title="6.2 动画获取cy.animation()"></a>6.2 动画获取cy.animation()</h2><p>获取视口的动画。</p>
-<p><code>cy.animation( options )</code></p>
-<p>options参数同上, 该函数用来获取指定配置信息的动画</p>
-<h2 id="6-3-为动画添加延迟cy-delay"><a href="#6-3-为动画添加延迟cy-delay" class="headerlink" title="6.3 为动画添加延迟cy.delay()"></a>6.3 为动画添加延迟cy.delay()</h2><p><code>cy.delay( duration, complete )</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy</span><br><span class="line">  .animate(&#123;</span><br><span class="line">    fit: &#123; <span class="attr">eles</span>: <span class="string">'#j'</span> &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  .delay(<span class="number">1000</span>)   <span class="comment">// 1s</span></span><br><span class="line"></span><br><span class="line">  .animate(&#123;</span><br><span class="line">    fit: &#123; <span class="attr">eles</span>: <span class="string">'#e'</span> &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-4-获取视口的延迟动画cy-delayAnimation"><a href="#6-4-获取视口的延迟动画cy-delayAnimation" class="headerlink" title="6.4 获取视口的延迟动画cy.delayAnimation()"></a>6.4 获取视口的延迟动画cy.delayAnimation()</h2><p><code>cy.delayAnimation( duration )</code> — duration为延迟时间</p>
-<h2 id="6-5-停止动画"><a href="#6-5-停止动画" class="headerlink" title="6.5 停止动画"></a>6.5 停止动画</h2><p><code>stop(clearQueue, jumpToEnd)</code><br>clearQueue是一个布尔值(默认为false)，表示动画队列是否应该被清空。<br>jumpToEnd一个布尔值(默认为false)，指示当前运行的动画是否应该跳转到它们的末端，而不是中途停止。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.animate(&#123;</span><br><span class="line">  fit: &#123; <span class="attr">eles</span>: <span class="string">'#j'</span> &#125;</span><br><span class="line">&#125;, &#123; <span class="attr">duration</span>: <span class="number">2000</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// stop in the middle</span></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  cy.stop();</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-6-清空动画队列cy-clearQueue"><a href="#6-6-清空动画队列cy-clearQueue" class="headerlink" title="6.6 清空动画队列cy.clearQueue()"></a>6.6 清空动画队列cy.clearQueue()</h2><p>删除viewport中所有排队的动画。</p>
-<h1 id="七-布局-Layout"><a href="#七-布局-Layout" class="headerlink" title="七.布局 Layout"></a>七.布局 Layout</h1><p><code>cy.layout()</code></p>
-<p>别名: <code>cy.createLayout()</code>, <code>cy.makeLayout()</code></p>
-<p>获取一个新的布局，它可以用于用算法在图中定位节点。</p>
-<p>cy.layout( options )</p>
-<ul>
-<li>options  布局参数, options.name必须指定</li>
-</ul>
-<p>cy.layout()会返回一个布局实例，可以基于这个实例进行其他操作</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> layout = cy.layout(&#123;</span><br><span class="line">  name: <span class="string">'random'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">layout.run();</span><br></pre></td></tr></table></figure>
-
-<h1 id="八-样式Style"><a href="#八-样式Style" class="headerlink" title="八. 样式Style"></a>八. 样式Style</h1><p><code>cy.style()</code></p>
-<ul>
-<li>cy.style() — 获取当前图的样式对象</li>
-<li>cy.style( stylesheet ) — 为图指定新的样式对象<br><strong><a href="https://js.cytoscape.org/#style" target="_blank" rel="noopener">stylesheet</a></strong> 参数可以是一个 <code>cytoscape.stylesheet()</code> 对象, 一个样式对象的字符串, 也可以指定为JSON格式的字符串(格式参考[options.style`](<a href="https://js.cytoscape.org/#style" target="_blank" rel="noopener">https://js.cytoscape.org/#style</a>))</li>
-</ul>
-<h2 id="8-1-样式字符串"><a href="#8-1-样式字符串" class="headerlink" title="8.1 样式字符串"></a>8.1 样式字符串</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cytoscape(&#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'cy'</span>),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  style: <span class="string">'node &#123; background-color: green; &#125;'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// , ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-2-普通JSON格式"><a href="#8-2-普通JSON格式" class="headerlink" title="8.2 普通JSON格式"></a>8.2 普通JSON格式</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cytoscape(&#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'cy'</span>),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  style: [</span><br><span class="line">    &#123;</span><br><span class="line">      selector: <span class="string">'node'</span>,</span><br><span class="line">      style: &#123;</span><br><span class="line">        <span class="string">'background-color'</span>: <span class="string">'red'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// , ...</span></span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  <span class="comment">// , ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-3-cytoscape-stylesheet-用法"><a href="#8-3-cytoscape-stylesheet-用法" class="headerlink" title="8.3 cytoscape.stylesheet()`用法"></a>8.3 cytoscape.stylesheet()`用法</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cytoscape(&#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'cy'</span>),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  style: cytoscape.stylesheet()</span><br><span class="line">    .selector(<span class="string">'node'</span>)</span><br><span class="line">      .style(&#123;</span><br><span class="line">        <span class="string">'background-color'</span>: <span class="string">'blue'</span></span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// , ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-4-根据元素data进行样式绘制"><a href="#8-4-根据元素data进行样式绘制" class="headerlink" title="8.4 根据元素data进行样式绘制"></a>8.4 根据元素data进行样式绘制</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cytoscape(&#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'cy'</span>),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  style: cytoscape.stylesheet()</span><br><span class="line">    .selector(<span class="string">'node'</span>)</span><br><span class="line">      .style(&#123;</span><br><span class="line">        <span class="string">'background-color'</span>: <span class="function"><span class="keyword">function</span>(<span class="params"> ele </span>)</span>&#123; <span class="keyword">return</span> ele.data(<span class="string">'bg'</span>) &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// which works the same as</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 'background-color': 'data(bg)'</span></span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// , ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-5-设置一个全新的样式"><a href="#8-5-设置一个全新的样式" class="headerlink" title="8.5 设置一个全新的样式"></a>8.5 设置一个全新的样式</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.style()</span><br><span class="line">  .clear() <span class="comment">//清除默认样式而应用一个全新的样式</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 定义节点样式</span></span><br><span class="line">  .selector(<span class="string">'node'</span>)</span><br><span class="line">    .style(<span class="string">'background-color'</span>, <span class="string">'magenta'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 定义边样式</span></span><br><span class="line">  .selector(<span class="string">'edge'</span>)</span><br><span class="line">      .style(&#123;</span><br><span class="line">      <span class="string">'width'</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="string">'line-color'</span>: <span class="string">'yellow'</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  .update() <span class="comment">// 显示声明样式更新代码的结束，通知cytoscape更新元素样式</span></span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-6-从样式字符串创建style"><a href="#8-6-从样式字符串创建style" class="headerlink" title="8.6 从样式字符串创建style"></a>8.6 从样式字符串创建style</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.style()</span><br><span class="line">  .fromString(<span class="string">'node &#123; background-color: blue; &#125;'</span>)</span><br><span class="line"></span><br><span class="line">  .update() <span class="comment">// update the elements in the graph with the new style</span></span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-
-<h2 id="8-7-获取当前样式的JSON对象"><a href="#8-7-获取当前样式的JSON对象" class="headerlink" title="8.7 获取当前样式的JSON对象"></a>8.7 获取当前样式的JSON对象</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> styleJson = cy.style().json();</span><br><span class="line"><span class="keyword">var</span> serializedJson = <span class="built_in">JSON</span>.stringify( styleJson );</span><br></pre></td></tr></table></figure>
-
-<h1 id="九-图的导出"><a href="#九-图的导出" class="headerlink" title="九. 图的导出"></a>九. 图的导出</h1><h2 id="9-1-将当前图形视图导出为PNG图像"><a href="#9-1-将当前图形视图导出为PNG图像" class="headerlink" title="9.1 将当前图形视图导出为PNG图像"></a>9.1 将当前图形视图导出为PNG图像</h2><p>cy.png( options )</p>
-<ul>
-<li><p>options</p>
-<p>导出参数设置</p>
-<ul>
-<li><p>output</p>
-<p>输出应该是“base64uri”(默认)、“base64”、“blob”还是“blob-promise”(返回解析为blob的Promise)。</p>
-</li>
-<li><p>bg</p>
-<p>图像的背景颜色(默认为白色)。</p>
-</li>
-<li><p>full</p>
-<p>是导出当前的viewport视图(“false”，默认)还是导出整个图(“true”)。</p>
-</li>
-<li><p>scale </p>
-<p>此值指定一个正数，该正数缩放生成的图像的大小。</p>
-</li>
-<li><p>maxWidth</p>
-<p> 指定与“maxHeight”组合的自动比例，以便生成的图像宽度不超过“maxWidth”。</p>
-</li>
-<li><p>maxHeight</p>
-<p> 指定与“maxWidth”组合的自动比例，以便生成的图像不高于“maxHeight”。</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>eg:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> png64 = cy.png();</span><br><span class="line"></span><br><span class="line"><span class="comment">// put the png data in an img tag</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#png-eg'</span>).setAttribute(<span class="string">'src'</span>, png64);</span><br></pre></td></tr></table></figure>
-
-<h2 id="9-2-导出图为jpg"><a href="#9-2-导出图为jpg" class="headerlink" title="9.2 导出图为jpg"></a>9.2 导出图为jpg</h2><p><code>cy.jpg()</code></p>
-<p>cy.jpg( options )</p>
-<ul>
-<li><p>options</p>
-<p>导出参数对象</p>
-<ul>
-<li><p>output</p>
-<p>输出应该是“base64uri”(默认)、“base64”、“blob”还是“blob-promise”(返回解析为blob的Promise)。</p>
-</li>
-<li><p>bg</p>
-<p>图像的背景颜色(默认为白色)。</p>
-</li>
-<li><p>full</p>
-<p>是导出当前的viewport视图(“false”，默认)还是导出整个图(“true”)。</p>
-</li>
-<li><p>scale</p>
-<p>此值指定一个正数，该正数缩放生成的图像的大小。</p>
-</li>
-<li><p>maxWidth</p>
-<p>指定与“maxHeight”组合的自动比例，以便生成的图像宽度不超过“maxWidth”。</p>
-</li>
-<li><p>maxHeight</p>
-<p>指定与“maxWidth”组合的自动比例，以便生成的图像不高于“maxHeight”。</p>
-</li>
-<li><p>quality</p>
-<p>指定从’ 0 ‘(低质量，低文件大小)到’ 1 ‘(高质量，高文件大小)的图像质量。如果没有设置，则使用浏览器的默认质量值。</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> jpg64 = cy.jpg();</span><br><span class="line"></span><br><span class="line"><span class="comment">// put the png data in an img tag</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#jpg-eg'</span>).setAttribute(<span class="string">'src'</span>, jpg64);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="9-3-导出JSON"><a href="#9-3-导出JSON" class="headerlink" title="9.3 导出JSON"></a>9.3 导出JSON</h2><p><code>cy.json()</code></p>
-<p>以初始化时使用的相同JSON格式导入或导出图数据。</p>
-<p>cy.json( flatEles )</p>
-<ul>
-<li><p>flatEles</p>
-<p>resulant JSON是否应该将元素包含为平面数组(‘ true ‘)或两个按组键控的数组(‘ false ‘，默认)。</p>
-</li>
-</ul>
-<p>cy.json( cyJson )</p>
-<p>将图形作为JSON导入，只更新指定的字段。</p>
-<ul>
-<li><p><a href="https://js.cytoscape.org/#core/initialisation" target="_blank" rel="noopener">cyJson</a></p>
-<p>具有与应该更改的状态对应的字段的对象。</p>
-</li>
-</ul>
-<p>eg:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">cy.json(&#123;</span><br><span class="line">  zoom: <span class="number">2</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>前端资源整理</title>
-    <url>/2020/06/04/2020-2020-06-04-%E5%89%8D%E7%AB%AF%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<p><img src="https://caniuse.com/" alt="JavaScript语法兼容性查询网站"></p>
-<p><img src="https://kangax.github.io/compat-table/es6/" alt="ES语法兼容性查询网站"></p>
-<p><img src="https://zh.javascript.info/" alt="JavaScript现代教程"> </p>
-<p><img src="ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B" alt="https://es6.ruanyifeng.com/">  </p>
-<p><img src="NodeJS%E5%85%A5%E9%97%A8" alt="https://www.nodebeginner.org/index-zh-cn.html"> </p>
-<p><img src="JavaScript%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90" alt="https://zhuanlan.zhihu.com/p/30333791"></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
