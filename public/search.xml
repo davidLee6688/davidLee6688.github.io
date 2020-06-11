@@ -13,6 +13,18 @@
       </tags>
   </entry>
   <entry>
+    <title>HTML标签整理</title>
+    <url>/2020/05/12/2020-2020-05-12-HTML%E6%A0%87%E7%AD%BE%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<p><img src="/img/HTML%E6%A0%87%E7%AD%BE%E6%95%B4%E7%90%86.png" alt="HTML标签整理.png"></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Cytoscape.js教程</title>
     <url>/2020/05/16/2020-2020-05-16-cytoscape-js%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="一-Cytoscape-js简介与安装"><a href="#一-Cytoscape-js简介与安装" class="headerlink" title="一. Cytoscape.js简介与安装"></a>一. Cytoscape.js简介与安装</h1><h2 id="1-1-Cytoscape-js是什么？"><a href="#1-1-Cytoscape-js是什么？" class="headerlink" title="1.1 Cytoscape.js是什么？"></a>1.1 Cytoscape.js是什么？</h2><p>cytoscape.js是一个做网页可视化的常用工具 。cytoscape.js包含图论模型和可选的渲染器，用于显示交互式图形。该库旨在使程序员和科学家尽可能轻松地在他们的应用程序中使用图形理论，无论是用于Node.js应用程序中的服务器端分析还是用于丰富的用户界面。 </p>
@@ -484,18 +496,6 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTML标签整理</title>
-    <url>/2020/05/12/2020-2020-05-12-HTML%E6%A0%87%E7%AD%BE%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<p><img src="/img/HTML%E6%A0%87%E7%AD%BE%E6%95%B4%E7%90%86.png" alt="HTML标签整理.png"></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -2803,7 +2803,7 @@
 <li>数组(Array)的数据类型是 object</li>
 <li>日期(Date)的数据类型为 object</li>
 <li>null 的数据类型是 object</li>
-<li>未定义变量的数据类型为 undefined</li>
+<li>未定义变量的数据类型为 undefined<br>（很多开发人员将undefined和undeclared混为一谈，但在JavaScript中它们是两码事。undefined是值的一种,表示变量声明过但还没有进行赋值。undeclared则表示变量还没有被声明过。）</li>
 </ul>
 <p>如果对象是 JavaScript Array 或 JavaScript Date ，我们就无法通过 <strong>typeof</strong> 来判断他们的类型，因为都是 返回 object。</p>
 <p><strong>constructor 属性</strong></p>
@@ -3110,6 +3110,95 @@
 <td align="left"><a href="https://www.runoob.com/try/try.php?filename=tryjs_type_convert_undefined" target="_blank" rel="noopener">尝试一下 »</a></td>
 </tr>
 </tbody></table>
+<h3 id="2-0-1-值"><a href="#2-0-1-值" class="headerlink" title="2.0.1 值"></a>2.0.1 值</h3><ul>
+<li><p>数组</p>
+<ul>
+<li>和其他强类型语言不同，在JavaScript中，数组可以容纳任何类型的值，可以是字符串、数字、对象（object），甚至是其他数组（多维数组就是通过这种方式来实现的）</li>
+<li>对数组声明后即可向其中加入值，不需要预先设定大小</li>
+<li>使用delete运算符可以将单元从数组中删除，但是请注意，单元删除后，数组的length属性并不会发生变化</li>
+<li>数组通过数字进行索引，但有趣的是它们也是对象，所以也可以包含字符串键值和属性（但这些并不计算在数组长度内）</li>
+<li>类数组<br>有时需要将类数组（一组通过数字索引的值）转换为真正的数组例如，一些DOM查询操作会返回DOM元素列表，它们并非真正意义上的数组，但十分类似。另一个例子是通过arguments对象（类数组）将函数的参数当作列表来访问（从ES6开始已废止）。工具函数slice(..)经常被用于这类转换：<br><code>Array.prototype.slice.call( arguments )</code></li>
+</ul>
+</li>
+<li><p>字符串</p>
+<ul>
+<li><p>字符串不可变: 指字符串的成员函数不会改变其原始值，而是创建并返回一个新的字符串。而数组的成员函数都是在其原始值上进行操作。</p>
+</li>
+<li><p>许多数组函数用来处理字符串很方便。虽然字符串没有这些函数，但可以通过“借用”数组的非变更方法来处理字符串，如<code>Array.prototype.join.call(a, &quot;-&quot;)</code> <code>Array.prototype.map.call(a, (v) =&gt; {})</code>;<br>`Array.prototype<br><strong>数组逆序</strong>（借用Array.prototype.reverse(),但是这个函数只能作用于可变对象，字符串为不可变对象，因此进行变通使用）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"hello"</span>;</span><br><span class="line"><span class="keyword">var</span> c = a.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</span><br><span class="line"><span class="built_in">console</span>.log(c);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>数字</p>
+<ul>
+<li><p>JavaScript只有一种数值类型：number（数字），包括“整数”和带小数的十进制数</p>
+</li>
+<li><p>由于数字值可以使用Number对象进行封装（参见第3章），因此数字值可以调用Number.prototype中的方法, <code>toFixed</code>, <code>toPrecision()</code>,等`</p>
+</li>
+<li><p>还可以使用指数形式<code>1E3</code>, 二进制，八进制和十六进制(0x)来表示</p>
+</li>
+<li><p>较小的数值： 二进制浮点数最大的问题（不仅JavaScript，所有遵循IEEE 754规范的语言都是如此），是会出现如下情况：<code>0.1 + 0.2 === 0.3</code> 为false</p>
+<p>二进制浮点数中的0.1和0.2并不是十分精确，它们相加的结果并非刚好等于0.3，而是一个比较接近的数字0.30000000000000004，所以条件判断结果为false。</p>
+<p>那么应该怎样来判断0.1 + 0.2和0.3是否相等呢？最常见的方法是设置一个误差范围值，通常称为“机器精度”（machine epsilon），对JavaScript的数字来说，这个值通常是2^-52 (2.220446049250313e-16)。</p>
+<p>从ES6开始，该值定义在<code>Number.EPSILON</code>，可以基于这个误差值来解决上述问题</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">equal</span>(<span class="params">n1, n2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.abs( n1 - n2 ) &lt; <span class="built_in">Number</span>.EPSILON;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(equal(<span class="number">0.1</span>+<span class="number">0.2</span>, <span class="number">0.3</span>));</span><br></pre></td></tr></table></figure>
+
+<p><strong>整数的安全范围</strong></p>
+<p>能够呈现的最大浮点数大约是1.798e+308（这是一个相当大的数字），它定义在Number. MAXVALUE中。最小浮点数定义在Number.MIN VALUE中，大约是5e-324，它不是负数，但无限接近于0！</p>
+<p>数字的呈现方式决定了“整数”的安全值范围远远小于Number.MAX VALUE。</p>
+<p>能够被“安全”呈现的最大整数是2^53-1，即9007199254740991，在ES6中被定义为Number.MAX SAFE INTEGER。最小整数是-9007199254740991，在ES6中被定义为Number.MIN SAFE INTEGER。<br><strong>整数检测</strong></p>
+<p>ES6: <code>Number.isInteger()</code><br>Polyfill</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Number</span>.isInteger = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> num === <span class="string">"number"</span> &amp;&amp; num % <span class="number">1</span> == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>安全整数检测</strong><br>ES6: <code>Number.isSafeInteger()</code></p>
+<p>Polyfill:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Number</span>.isSafeInteger = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Number</span>.isInteger( num ) &amp;&amp; <span class="built_in">Math</span>.abs(num) &lt;= <span class="built_in">Number</span>.MAX_SAFE_INTEGER;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>特殊的值</p>
+<ul>
+<li><p><strong>undefined和null</strong> : undefined类型只有一个值，即undefined。null类型也只有一个值，即null。它们的名称既是类型也是值。undefined和null常被用来表示“空的”值或“不是值”的值。二者之间有一些细微的差别。</p>
+<p>例如：<br>• null指空值（empty value）• undefined指没有值（missing value）或者：• undefined指从未赋值• null指曾赋过值，但是目前没有值null是一个特殊关键字，不是标识符，我们不能将其当作变量来使用和赋值。然而undefined却是一个标识符，可以被当作变量来使用和赋值。</p>
+</li>
+<li><p>void运算符: void并不改变表达式的结果，只是让表达式不返回值<br><code>return void setTImeout(doSomething, 100)</code></p>
+</li>
+<li><p>特殊的数字：<br><strong>NaN</strong>是一个“警戒值”（sentinel value，有特殊用途的常规值），用于指出数字类型中的错误情况，即“执行数学运算没有成功，这是失败后返回的结果”。ES6开始我们可以使用工具函数<code>Number.isNaN(..)</code>, ES6之前使用<code>window.isNaN</code></p>
+<p><strong>Infinity和-Infinity</strong>:   如果数学运算（如加法）的结果超出处理范围，则由IEEE 754规范中的“就近取整”（round-to-nearest）模式来决定最后的结果。例如，相对于Infinity, Number.MAX VALUE +Math.pow(2, 969)与Number.MAX VALUE更为接近，因此它被“向下取整”（round down）；而Number.MAX VALUE + Math.pow(2, 970)与Infinity更为接近，所以它被“向上取整”（roundup）。</p>
+<p><strong>+0和-0</strong>:   我们可以使用以下代码来区分+0和-0: </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNegZero</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">  n = <span class="built_in">Number</span>( n );</span><br><span class="line">  <span class="keyword">return</span> ( n === <span class="number">0</span> ) &amp;&amp; ( <span class="number">1</span> / n === -<span class="literal">Infinity</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>特殊等式</strong><br>如前所述，NaN和-0在相等比较时的表现有些特别。由于NaN和自身不相等，所以必须使用ES6中的Number.isNaN(..)（或者polyfill）。而-0等于0（对于===也是如此，参见第4章），因此我们必须使用isNegZero(..)这样的工具函数。ES6中新加入了一个工具方法Object.is(..)来判断两个值是否绝对相等，可以用来处理上述所有的特殊情况：<br>对于ES6之前的版本，Object.is(..)有一个简单的polyfill：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Object</span>.is = <span class="function"><span class="keyword">function</span>(<span class="params">v1, v2</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 判断是否为-0</span></span><br><span class="line">    <span class="keyword">if</span>(v1 === <span class="number">0</span> &amp;&amp; v2 === <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>/v1 === <span class="number">1</span>/v2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 判断是否是NaN</span></span><br><span class="line">    <span class="keyword">if</span>(v1 !== v1)&#123;</span><br><span class="line">        <span class="keyword">return</span> v2 !== v2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 其他情况</span></span><br><span class="line">    <span class="keyword">return</span> v1 === v2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-0-2-原生函数"><a href="#2-0-2-原生函数" class="headerlink" title="2.0.2 原生函数"></a>2.0.2 原生函数</h3><p>常用的原生函数有：</p>
+<ul>
+<li>String()</li>
+<li>Number()</li>
+<li>Boolean()</li>
+<li>Array()</li>
+<li>Object()</li>
+<li>Function()</li>
+<li>RegExp()</li>
+<li>Date()</li>
+<li>Error()</li>
+<li>Symbol()——ES6中新加入的！实际上，它们就是内建函数。</li>
+</ul>
+<p><strong>内部属性[[Class]]</strong></p>
+<p>所有typeof返回值为”object”的对象（如数组）都包含一个内部属性[[Class]]（我们可以把它看作一个内部的分类，而非传统的面向对象意义上的类）。这个属性无法直接访问，一般通过Object.prototype.toString(..)来查看。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="regexp">/regexp-literal/i</span>));</span><br><span class="line"><span class="comment">// 基本类型值被各自的封装对象自动包装，所以它们的内部[[Class]]属性值分别为"String"、"Number"和"Boolean"。</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="literal">undefined</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="literal">null</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="string">"abc"</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="number">42</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(<span class="literal">true</span>));</span><br></pre></td></tr></table></figure>
+
+<p><strong>封装对象包装</strong></p>
+<p>封装对象（object wrapper）扮演着十分重要的角色。由于基本类型值没有．length和．toString()这样的属性和方法，需要通过封装对象才能访问，此时JavaScript会自动为基本类型值包装（box或者wrap）一个封装对象：</p>
+<p>如果需要经常用到这些字符串属性和方法，比如在for循环中使用i &lt; a.length，那么从一开始就创建一个封装对象也许更为方便，这样JavaScript引擎就不用每次都自动创建了。但实际证明这并不是一个好办法，因为浏览器已经为．length这样的常见情况做了性能优化，直接使用封装对象来“提前优化”代码反而会降低执行效率。</p>
+<p>一般情况下，我们不需要直接使用封装对象。最好的办法是让JavaScript引擎自己决定什么时候应该使用封装对象。换句话说，就是应该优先考虑使用”abc”和42这样的基本类型值，而非newString(“abc”)和new Number(42)。<br><strong>拆封</strong><br>如果想要得到封装对象中的基本类型值，可以使用valueOf()函数：<code>var a = new String(&quot;abc&quot;); console.log(a.valueOf());</code></p>
+<p>在需要用到封装对象中的基本类型值的地方会发生隐式拆封(强制类型转换)<code>var a = new String(&quot;abc&quot;); var b = a + &quot;&quot;;</code></p>
+<h3 id="2-0-3-强制类型转换"><a href="#2-0-3-强制类型转换" class="headerlink" title="2.0.3 强制类型转换"></a>2.0.3 <strong>强制类型转换</strong></h3><p>将值从一种类型转换为另一种类型通常称为类型转换（type casting），这是显式的情况；隐式的情况称为强制类型转换（coercion）。</p>
+<p>类型转换发生在静态类型语言的编译阶段，而强制类型转换则发生在动态类型语言的运行时（runtime）</p>
 <h2 id="2-1-循环"><a href="#2-1-循环" class="headerlink" title="2.1 循环"></a>2.1 循环</h2><p>我们经常需要重复执行一些操作。</p>
 <p>例如，我们需要将列表中的商品逐个输出，或者运行相同的代码将数字 1 到 10 逐个输出。</p>
 <p><strong>循环</strong> 是一种重复运行同一代码的方法。</p>
@@ -3632,18 +3721,19 @@
 
 </li>
 </ol>
-<h2 id="2-6-行为委托"><a href="#2-6-行为委托" class="headerlink" title="2.6 行为委托"></a>2.6 行为委托</h2><p>下面是一个行为委托的小例子</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Task = &#123;</span><br><span class="line">    setId: <span class="function"><span class="keyword">function</span>(<span class="params">ID</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = ID;</span><br><span class="line">    &#125;,</span><br><span class="line">    outputID: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.id)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将XYZ对象委托给Task</span></span><br><span class="line"><span class="keyword">var</span> XYZ = <span class="built_in">Object</span>.create(Task);</span><br><span class="line">XYZ.prepareTask = <span class="function"><span class="keyword">function</span>(<span class="params">ID, Label</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.setId(ID);</span><br><span class="line">    <span class="keyword">this</span>.label = Label;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">XYZ.outputTaskDetails = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.outputID();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.label);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">XYZ.prepareTask(<span class="number">11</span>, <span class="string">"javascript"</span>);</span><br><span class="line">XYZ.outputTaskDetails();</span><br><span class="line"></span><br><span class="line"><span class="comment">// ABC = Object.create(Task);</span></span><br><span class="line"><span class="comment">// ABC ...</span></span><br></pre></td></tr></table></figure>
-
-<p>在这段代码中，Task和XYZ并不是类（或者函数），它们是对象。XYZ通过Object. create(..)创建，它的[[Prototype]]委托了Task对象（参见第5章）。</p>
-<p>相比于面向类（或者说面向对象），这种编码风格称为“对象关联”（OLOO, objectslinked to other objects）。我们真正关心的只是XYZ对象（和ABC对象）委托了Task对象。</p>
-<p><strong>对象关联风格的代码还有一些不同之处</strong></p>
 </li>
 </ul>
+<h2 id="2-6-行为委托"><a href="#2-6-行为委托" class="headerlink" title="2.6 行为委托"></a>2.6 行为委托</h2><p>  下面是一个行为委托的小例子</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">  <span class="keyword">var</span> Task = &#123;</span><br><span class="line">      setId: <span class="function"><span class="keyword">function</span>(<span class="params">ID</span>)</span>&#123;</span><br><span class="line">          <span class="keyword">this</span>.id = ID;</span><br><span class="line">      &#125;,</span><br><span class="line">      outputID: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="keyword">this</span>.id)</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 将XYZ对象委托给Task</span></span><br><span class="line">  <span class="keyword">var</span> XYZ = <span class="built_in">Object</span>.create(Task);</span><br><span class="line">  XYZ.prepareTask = <span class="function"><span class="keyword">function</span>(<span class="params">ID, Label</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.setId(ID);</span><br><span class="line">      <span class="keyword">this</span>.label = Label;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  XYZ.outputTaskDetails = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.outputID();</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.label);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  XYZ.prepareTask(<span class="number">11</span>, <span class="string">"javascript"</span>);</span><br><span class="line">  XYZ.outputTaskDetails();</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// ABC = Object.create(Task);</span></span><br><span class="line"><span class="comment">// ABC ...</span></span><br></pre></td></tr></table></figure>
+
+<p>  在这段代码中，Task和XYZ并不是类（或者函数），它们是对象。XYZ通过Object. create(..)创建，它的[[Prototype]]委托了Task对象（参见第5章）。</p>
+<p>  相比于面向类（或者说面向对象），这种编码风格称为“对象关联”（OLOO, objectslinked to other objects）。我们真正关心的只是XYZ对象（和ABC对象）委托了Task对象。</p>
+<p>  <strong>对象关联风格的代码还有一些不同之处</strong></p>
 <ol>
 <li><p>在上面的代码中，id和label数据成员都是直接存储在XYZ上（而不是Task）。通常来说，在[[Prototype]]委托中最好把状态保存在委托者（XYZ、ABC）而不是委托目标（Task）上。</p>
-</li>
-<li><p>在类设计模式中，我们故意让父类（Task）和子类（XYZ）中都有outputTask方法，这样就可以利用重写（多态）的优势。在委托行为中则恰好相反：我们会尽量避免在[[Prototype]]链的不同级别中使用相同的命名，否则就需要使用笨拙并且脆弱的语法来消除引用歧义（参见第4章）。这个设计模式要求尽量少使用容易被重写的通用方法名，提倡使用更有描述性的方法名，尤其是要写清相应对象行为的类型。这样做实际上可以创建出更容易理解和维护的代码，因为方法名（不仅在定义的位置，而是贯穿整个代码）更加清晰（自文档）。</p>
+<ol start="2">
+<li>在类设计模式中，我们故意让父类（Task）和子类（XYZ）中都有outputTask方法，这样就可以利用重写（多态）的优势。在委托行为中则恰好相反：我们会尽量避免在[[Prototype]]链的不同级别中使用相同的命名，否则就需要使用笨拙并且脆弱的语法来消除引用歧义（参见第4章）。这个设计模式要求尽量少使用容易被重写的通用方法名，提倡使用更有描述性的方法名，尤其是要写清相应对象行为的类型。这样做实际上可以创建出更容易理解和维护的代码，因为方法名（不仅在定义的位置，而是贯穿整个代码）更加清晰（自文档）。</li>
+</ol>
 </li>
 <li><p>this.setID(ID); XYZ中的方法首先会寻找XYZ自身是否有setID(..)，但是XYZ中并没有这个方法名，因此会通过[[Prototype]]委托关联到Task继续寻找，这时就可以找到setID(..)方法。此外，由于调用位置触发了this的隐式绑定规则（参见第2章），因此虽然setID(..)方法在Task中，运行时this仍然会绑定到XYZ，这正是我们想要的。在之后的代码中我们还会看到this.outputID()，原理相同。换句话说，我们和XYZ进行交互时可以使用Task中的通用方法，因为XYZ委托了Task。委托行为意味着某些对象（XYZ）在找不到属性或者方法引用时会把这个请求委托给另一个对象（Task）。</p>
 <p>这是一种极其强大的设计模式，和父类、子类、继承、多态等概念完全不同。在你的脑海中对象并不是按照父类到子类的关系垂直组织的，而是通过任意方向的委托关联并排组织的。</p>
@@ -3655,6 +3745,16 @@
 <p>上面的代码是典型的类设计模式的实现代码，下面用行为委托来进行改写</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 用行为委托来进行改写</span></span><br><span class="line"><span class="keyword">var</span> Foo = &#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params">who</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.me = who;</span><br><span class="line">    &#125;,</span><br><span class="line">    identity: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"I am "</span> + <span class="keyword">this</span>.me;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> Bar = <span class="built_in">Object</span>.create(Foo);</span><br><span class="line">Bar.speak = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Hello, "</span> + <span class="keyword">this</span>.identity() + <span class="string">"."</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b1 = <span class="built_in">Object</span>.create(Bar);</span><br><span class="line">b1.init(<span class="string">"b1"</span>);</span><br><span class="line"><span class="keyword">var</span> b2 = <span class="built_in">Object</span>.create(Bar);</span><br><span class="line">b2.init(<span class="string">"b2"</span>);</span><br><span class="line"></span><br><span class="line">b1.speak();</span><br><span class="line">b2.speak();</span><br></pre></td></tr></table></figure>
 
+<p><strong>一个登陆控制的例子</strong><br>类设计模式写法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Controller</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.errors = [];</span><br><span class="line">&#125;</span><br><span class="line">Controller.prototype.showDialog = <span class="function"><span class="keyword">function</span>(<span class="params">title, msg</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.alert(title + msg);</span><br><span class="line">&#125;</span><br><span class="line">Controller.prototype.success = <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.showDialog(<span class="string">"Success"</span>, msg);</span><br><span class="line">&#125;</span><br><span class="line">Controller.prototype.failure = <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.errors.push(err);</span><br><span class="line">    <span class="keyword">this</span>.showDialog(<span class="string">"Error"</span>, err);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">LoginController</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    Controller.call(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">LoginController.prototype = <span class="built_in">Object</span>.create(Controller.prototype);</span><br><span class="line">LoginController.prototype.constructor = LoginController;</span><br><span class="line">LoginController.prototype.getUser = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(<span class="string">"username"</span>).value;</span><br><span class="line">&#125;</span><br><span class="line">LoginController.prototype.getPassword = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(<span class="string">"password"</span>).value;</span><br><span class="line">&#125;</span><br><span class="line">LoginController.prototype.validateEntry = <span class="function"><span class="keyword">function</span>(<span class="params">user, pw</span>)</span>&#123;</span><br><span class="line">    user  = user || <span class="keyword">this</span>.getUser();</span><br><span class="line">    pw = pw || <span class="keyword">this</span>.getPassword();</span><br><span class="line">    <span class="keyword">if</span>(!(user &amp;&amp; pw))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.failure(<span class="string">"Please enter a username &amp; password!"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(pw.length &lt; <span class="number">5</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.failure(<span class="string">"Password must be 5+ characters!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.success(<span class="string">"login success!!!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">LoginController.prototype.failure = <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">    Controller.prototype.failure.call(<span class="keyword">this</span>, <span class="string">"Login invalid: "</span> + err);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./登陆控制(类设计模式写法).js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"#"</span> <span class="attr">onsubmit</span>=<span class="string">"return onSubmit()"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">id</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">id</span>=<span class="string">"password"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">       <span class="function"><span class="keyword">function</span> <span class="title">onSubmit</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> lc = <span class="keyword">new</span> LoginController();</span></span><br><span class="line">            lc.validateEntry();</span><br><span class="line"><span class="actionscript">            <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>行为委托写法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Controller = &#123;</span><br><span class="line">  errors: [],</span><br><span class="line">  showDialog: <span class="function"><span class="keyword">function</span>(<span class="params">title, msg</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.alert(title + msg);</span><br><span class="line">  &#125;,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.showDialog(<span class="string">"Success"</span>, msg);</span><br><span class="line">  &#125;,</span><br><span class="line">  failure: <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.errors.push(err);</span><br><span class="line">    <span class="keyword">this</span>.showDialog(<span class="string">"Error"</span>, err);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将LoginController委托给Controller</span></span><br><span class="line"><span class="keyword">var</span> LoginController = <span class="built_in">Object</span>.create(Controller);</span><br><span class="line"><span class="built_in">Object</span>.defineProperties(LoginController, &#123;</span><br><span class="line">  getUser: &#123;</span><br><span class="line">    value: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(<span class="string">"username"</span>).value;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  getPassword: &#123;</span><br><span class="line">    value: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(<span class="string">"password"</span>).value;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  validateEntry: &#123;</span><br><span class="line">    value: <span class="function"><span class="keyword">function</span>(<span class="params">user, pw</span>) </span>&#123;</span><br><span class="line">      user = user || <span class="keyword">this</span>.getUser();</span><br><span class="line">      pw = pw || <span class="keyword">this</span>.getPassword();</span><br><span class="line">      <span class="keyword">if</span> (!(user &amp;&amp; pw)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.failure(<span class="string">"Please enter a username &amp; password!"</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pw.length &lt; <span class="number">5</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.failure(<span class="string">"Password must be 5+ characters!"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.success(<span class="string">"login success!!!"</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结</strong></p>
+<p>行为委托认为对象之间是兄弟关系，互相委托，而不是父类和子类的关系。JavaScript的[[Prototype]]机制本质上就是行为委托机制。也就是说，我们可以选择在JavaScript中努力实现类机制（参见第4和第5章），也可以拥抱更自然的[[Prototype]]委托机制。</p>
 ]]></content>
       <categories>
         <category>前端</category>
